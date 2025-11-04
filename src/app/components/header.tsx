@@ -8,7 +8,8 @@ import Link from "next/link";
 export default function Header() {
   const pathname = usePathname();
   const showSignInButton = pathname !== "/sign-in";
-  
+  const showDashboardButton = pathname !== "/dashboard";
+
   return (
     <header className="flex justify-between items-center px-6 py-4 bg-transparent shadow-sm  h-16">
       <div className="flex items-center">
@@ -30,13 +31,16 @@ export default function Header() {
         </SignedOut>
         <SignedIn>
           <UserButton />
-          <Link
-            href="/dashboard"
-            className="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold "
-          >
-            Dashboard
-          </Link>
+          {showDashboardButton && (
+            <Link
+              href="/dashboard"
+              className="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold "
+            >
+              Dashboard
+            </Link>
+          )}
         </SignedIn>
+
         <CustomConnectButton />
       </div>
     </header>
