@@ -15,7 +15,7 @@ export default function AdminPage() {
   const [actionType, setActionType] = useState<"add" | "remove" | null>(null);
 
   function addAuditor(adrs: Address) {
-    setActionType("add")
+    setActionType("add");
     writeContract({
       abi: MARKETPLACE_ABI,
       address: MARKETPLACE_ADDRESS,
@@ -25,7 +25,7 @@ export default function AdminPage() {
   }
 
   function removeAuditor(adrs: Address) {
-    setActionType("remove")
+    setActionType("remove");
     writeContract({
       abi: MARKETPLACE_ABI,
       address: MARKETPLACE_ADDRESS,

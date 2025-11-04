@@ -3,7 +3,7 @@
 import { type ReactNode } from "react";
 import config from "@/rainbowKitConfig";
 import { WagmiProvider } from "wagmi";
-import { RainbowKitProvider, darkTheme} from "@rainbow-me/rainbowkit";
+import { RainbowKitProvider, darkTheme } from "@rainbow-me/rainbowkit";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useState } from "react";
 import "@rainbow-me/rainbowkit/styles.css";

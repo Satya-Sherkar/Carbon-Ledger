@@ -1,5 +1,3 @@
-// app/sign-in/[[...sign-in]]/page.tsx
-
 "use client";
 
 import { useState } from "react";
