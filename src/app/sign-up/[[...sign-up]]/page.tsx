@@ -350,6 +350,10 @@ const SignUpPage = () => {
                   We've sent a verification code to{" "}
                   <strong>{formData.email}</strong>
                 </p>
+                <p className="text-sm text-amber-50 mt-2">
+                  If you don't see the email in your inbox, please check your
+                  spam folder.
+                </p>
               </div>
               <div>
                 <label
