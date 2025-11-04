@@ -1,6 +1,6 @@
 "use client";
 
-import { ConnectButton } from "@rainbow-me/rainbowkit";
+import CustomConnectButton from "./customConnectButton";
 import { SignInButton, SignedOut, SignedIn, UserButton } from "@clerk/nextjs";
 import Link from "next/link";
 
@@ -31,7 +31,7 @@ export default function Header() {
             Dashboard
           </Link>
         </SignedIn>
-        <ConnectButton />
+        <CustomConnectButton />
       </div>
     </header>
   );
