@@ -2,9 +2,13 @@
 
 import CustomConnectButton from "./customConnectButton";
 import { SignInButton, SignedOut, SignedIn, UserButton } from "@clerk/nextjs";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 
 export default function Header() {
+  const pathname = usePathname();
+  const showSignInButton = pathname !== "/sign-in";
+  
   return (
     <header className="flex justify-between items-center px-6 py-4 bg-transparent shadow-sm  h-16">
       <div className="flex items-center">
@@ -16,11 +20,13 @@ export default function Header() {
       </div>
       <div className="flex items-center gap-4">
         <SignedOut>
-          <SignInButton>
-            <button className="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold ">
-              Sign In
-            </button>
-          </SignInButton>
+          {showSignInButton && (
+            <SignInButton>
+              <button className="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold ">
+                Sign In
+              </button>
+            </SignInButton>
+          )}
         </SignedOut>
         <SignedIn>
           <UserButton />
