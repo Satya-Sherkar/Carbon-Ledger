@@ -103,7 +103,7 @@ const SignUpPage = () => {
 
       if (completeSignUp.status === "complete") {
         await setActive({ session: completeSignUp.createdSessionId });
-        router.push("/");
+        router.push("/dashboard");
       } else {
         console.log("Sign-up status:", JSON.stringify(completeSignUp, null, 2));
         setClerkError("Verification incomplete. Please try again.");
