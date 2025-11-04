@@ -6,8 +6,14 @@ import Footer from "./components/footer";
 import Providers from "./providers";
 
 export const metadata: Metadata = {
-  title: "Carbon Marketplace",
+  title: "Carbon-Ledger",
   description: "A Carbon Credit Marketplace powered by blockchain",
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: "1",
+  shrinkToFit: "no",
 };
 
 export default function RootLayout({

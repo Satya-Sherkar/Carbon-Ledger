@@ -2,7 +2,6 @@
 
 import { features } from "./constants";
 import Link from "next/link";
-import { ShieldUser } from "lucide-react";
 
 export default function Home() {
   return (

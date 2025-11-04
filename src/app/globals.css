@@ -1,8 +1,25 @@
 @import "tailwindcss";
 
 :root {
+  /* Colors */
   --background: #ffffff;
   --foreground: #171717;
+  --primary: #10b981;
+  --primary-dark: #059669;
+  --secondary: #3b82f6;
+  --secondary-dark: #2563eb;
+
+  /* Spacing */
+  --container-padding: 1rem;
+  --section-spacing: 2rem;
+
+  /* Typography */
+  --font-small: 0.875rem;
+  --font-base: 1rem;
+  --font-large: 1.25rem;
+  --font-xl: 1.5rem;
+  --font-2xl: 2rem;
+  --font-3xl: 3rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -12,7 +29,30 @@
   }
 }
 
+/* Base styles */
+html {
+  font-size: 16px;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Responsive text scaling */
+@media (max-width: 640px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+/* Container widths */
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
 }
