@@ -7,7 +7,8 @@ import Link from "next/link";
 
 export default function Header() {
   const pathname = usePathname();
-  const showSignInButton = pathname !== "/sign-in";
+  const showGetStartedButton =
+    pathname !== "/sign-in" && pathname !== "/sign-up"; 
   const showDashboardButton = pathname !== "/dashboard";
   const showConnectWalletButton = pathname !== "/";
 
@@ -22,7 +23,7 @@ export default function Header() {
       </div>
       <div className="flex items-center gap-4">
         <SignedOut>
-          {showSignInButton && (
+          {showGetStartedButton && (
             <SignInButton>
               <button className="px-4 py-2 text-white font-semibold border-2 cursor-pointer hover:scale-105 transform duration-200 ease-linear">
                 Get Started

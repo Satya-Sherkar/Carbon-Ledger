@@ -22,7 +22,7 @@ export default function CustomConnectButton() {
           return (
             <button
               disabled
-              className="opacity-50 cursor-not-allowed px-6 py-2 rounded-md"
+              className="opacity-50 cursor-not-allowed px-4 py-2 rounded-md"
             >
               Loading...
             </button>
@@ -44,7 +44,7 @@ export default function CustomConnectButton() {
           <div className="flex gap-4">
             <button
               onClick={openAccountModal}
-              className="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold "
+              className="px-4 py-2 text-white font-semibold border-2 cursor-pointer hover:scale-105 transform duration-200 ease-linear"
               title="Account Details"
             >
               {account.displayName}
