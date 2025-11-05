@@ -9,6 +9,7 @@ export default function Header() {
   const pathname = usePathname();
   const showSignInButton = pathname !== "/sign-in";
   const showDashboardButton = pathname !== "/dashboard";
+  const showConnectWalletButton = pathname !== "/";
 
   return (
     <header className="flex justify-between items-center px-6 py-4 bg-transparent shadow-sm  h-16">
@@ -23,8 +24,8 @@ export default function Header() {
         <SignedOut>
           {showSignInButton && (
             <SignInButton>
-              <button className="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold ">
-                Sign In
+              <button className="px-4 py-2 text-white font-semibold border-2 cursor-pointer hover:scale-105 transform duration-200 ease-linear">
+                Get Started
               </button>
             </SignInButton>
           )}
@@ -34,14 +35,14 @@ export default function Header() {
           {showDashboardButton && (
             <Link
               href="/dashboard"
-              className="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold "
+              className="px-4 py-2 text-white font-semibold border-2 cursor-pointer hover:scale-105 transform duration-200 ease-linear"
             >
               Dashboard
             </Link>
           )}
         </SignedIn>
 
-        <CustomConnectButton />
+        {showConnectWalletButton && <CustomConnectButton />}
       </div>
     </header>
   );

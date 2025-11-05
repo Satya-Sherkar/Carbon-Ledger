@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <main className="relative min-h-screen overflow-hidden">
       {/* Content container */}
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-15">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left side - Hero content */}
           <div className="space-y-8">
@@ -47,12 +47,12 @@ export default function Home() {
             {/* CTA buttons */}
             <div className="flex flex-wrap gap-4">
               <Link href="/marketplace">
-                <button className="px-8 py-4 rounded-lg bg-linear-to-r from-green-500 to-blue-600 text-white font-semibold hover:from-green-600 hover:to-blue-700 transition-all shadow-lg shadow-green-500/25 hover:shadow-green-500/40 hover:scale-105 transform duration-300 ease-linear">
+                <button className="px-6 py-3 text-white font-semibold border-2 cursor-pointer hover:scale-105 transform duration-200 ease-linear">
                   Explore Marketplace
                 </button>
               </Link>
               <Link href="/dashboard/register-project">
-                <button className="px-8 py-4 rounded-lg bg-linear-to-r from-green-500 to-blue-600 text-white font-semibold hover:from-green-600 hover:to-blue-700 transition-all shadow-lg shadow-green-500/25 hover:shadow-green-500/40 hover:scale-105 transform duration-300 ease-linear">
+                <button className="px-6 py-3 text-white font-semibold border-2 cursor-pointer hover:scale-105 transform duration-200 ease-linear">
                   Register Your Project
                 </button>
               </Link>
