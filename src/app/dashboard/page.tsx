@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Leaf, Plus, Store, TrendingUp, BarChart3 } from "lucide-react";
 import { ListingCard } from "@/app/components/listingcard";
 import { useReadContract } from "wagmi";
-import { MARKETPLACE_ABI, MARKETPLACE_ADDRESS } from "../constants";
+import { MARKETPLACE_ABI, MARKETPLACE_ADDRESS } from "../../constants";
 
 export default function UserDashboard() {
   const { user } = useUser();

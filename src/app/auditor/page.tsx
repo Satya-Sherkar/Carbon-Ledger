@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useWriteContract, useWaitForTransactionReceipt } from "wagmi";
-import { MARKETPLACE_ABI, MARKETPLACE_ADDRESS } from "../constants";
+import { MARKETPLACE_ABI, MARKETPLACE_ADDRESS } from "../../constants";
 
 export default function AuditorPage() {
   const [projectId, setProjectId] = useState<number | undefined>(undefined);

@@ -1,6 +1,6 @@
 "use client";
 
-import { features } from "./constants";
+import { features } from "../constants";
 import Link from "next/link";
 
 export default function Home() {
