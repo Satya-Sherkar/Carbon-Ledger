@@ -6,7 +6,7 @@ import {
   useWaitForTransactionReceipt,
   useAccount,
 } from "wagmi";
-import { MARKETPLACE_ABI, MARKETPLACE_ADDRESS } from "../../constants";
+import { MARKETPLACE_ABI, MARKETPLACE_ADDRESS } from "../../../constants";
 
 export default function RegisterProject() {
   const { isConnected } = useAccount();
