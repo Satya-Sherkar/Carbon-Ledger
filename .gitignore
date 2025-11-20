@@ -42,3 +42,6 @@ next-env.d.ts
 
 # reference folders
 contracts
+
+# clerk configuration (can include secrets)
+/.clerk/
