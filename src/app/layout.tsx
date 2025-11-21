@@ -5,6 +5,15 @@ import "./globals.css";
 import Header from "./components/header";
 import Footer from "./components/footer";
 import Providers from "./providers";
+import { PropsWithChildren } from "react";
+import { Ubuntu } from "next/font/google";
+
+const ubuntu = Ubuntu({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "700"],
+  variable: "--font-ubuntu",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Carbon-Ledger",
@@ -19,16 +28,14 @@ export const viewport = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<PropsWithChildren<{}>>) {
   return (
     <ClerkProvider
       appearance={{
         theme: dark,
       }}
     >
-      <html lang="en">
+      <html lang="en" className={ubuntu.variable}>
         <body>
           <Providers>
             <Header />
