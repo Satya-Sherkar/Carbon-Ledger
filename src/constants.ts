@@ -768,3 +768,5 @@ export const MARKETPLACE_ABI = [
     inputs: [],
   },
 ];
+
+export const DB_NAME = "mongodb";

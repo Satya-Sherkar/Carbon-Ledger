@@ -4,8 +4,10 @@ import mongoose, { Schema, Document } from "mongoose";
 export interface IProject extends Document {
   title: string;
   description: string;
-  photoUrl?: string;
   owner: mongoose.Types.ObjectId;
+  ownerWalletAddress: string;
+  isVerified: boolean;
+  credits: number;
 }
 
 const projectSchema = new Schema<IProject>(
@@ -18,13 +20,24 @@ const projectSchema = new Schema<IProject>(
       type: String,
       required: true,
     },
-    photoUrl: {
-      type: String,
-    },
     owner: {
       type: Schema.Types.ObjectId,
       ref: "User",
       required: true,
+    },
+    ownerWalletAddress: {
+      type: String,
+      required: true,
+    },
+    isVerified: {
+      type: Boolean,
+      required: true,
+      default: false,
+    },
+    credits: {
+      type: Number,
+      required: true,
+      default: 0,
     },
   },
   {
@@ -32,4 +45,5 @@ const projectSchema = new Schema<IProject>(
   }
 );
 
-export const Project = mongoose.model<IProject>("Project", projectSchema);
+export const Project =
+  mongoose.models.Project || mongoose.model<IProject>("Project", projectSchema);

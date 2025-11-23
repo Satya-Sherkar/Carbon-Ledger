@@ -18,8 +18,15 @@ export default function RegisterProject() {
 
   const [projectName, setProjectName] = useState<string>("");
   const [projectOwnerAddress, setProjectOwnerAddress] = useState<string>("");
+  const [projectDescription, setProjectDescription] = useState<string>("");
+  const [projectOwnerEmail, setProjectOwnerEmail] = useState<string>("");
 
-  function registerProject(projectName: string, projectOwner: string) {
+  async function registerProject(
+    projectName: string,
+    projectOwner: string,
+    projectDescription: string,
+    projectOwnerEmail: string
+  ) {
     if (!projectName || !projectOwner) {
       alert("Please fill in all fields");
       return;
@@ -30,6 +37,20 @@ export default function RegisterProject() {
       address: MARKETPLACE_ADDRESS,
       functionName: "registerProject",
       args: [projectName, projectOwner],
+    });
+
+    // save additional project details to your backend or database here
+    await fetch("/api/register-project", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        title: projectName,
+        ownerWalletAddress: projectOwner,
+        description: projectDescription,
+        ownerEmail: projectOwnerEmail,
+      }),
     });
   }
 
@@ -56,13 +77,23 @@ export default function RegisterProject() {
           <div className="space-y-6">
             <div>
               <label className="text-sm text-gray-300 block mb-2">
-                Project Name
+                Project Name/ Title
               </label>
               <input
                 type="text"
                 placeholder="Enter Project Name"
                 value={projectName}
                 onChange={(e) => setProjectName(e.target.value)}
+                className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-400"
+              />
+              <label className="text-sm text-gray-300 block mb-2">
+                Project Description
+              </label>
+              <input
+                type="text"
+                placeholder="Enter Project Description"
+                value={projectDescription}
+                onChange={(e) => setProjectDescription(e.target.value)}
                 className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-400"
               />
             </div>
@@ -76,6 +107,16 @@ export default function RegisterProject() {
                 placeholder="0x..."
                 value={projectOwnerAddress}
                 onChange={(e) => setProjectOwnerAddress(e.target.value)}
+                className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-400"
+              />
+              <label className="text-sm text-gray-300 block mb-2">
+                Project Owner Email
+              </label>
+              <input
+                type="email"
+                placeholder="Enter email"
+                value={projectOwnerEmail}
+                onChange={(e) => setProjectOwnerEmail(e.target.value)}
                 className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-400"
               />
             </div>
@@ -93,7 +134,12 @@ export default function RegisterProject() {
             <div>
               <button
                 onClick={() =>
-                  registerProject(projectName, projectOwnerAddress)
+                  registerProject(
+                    projectName,
+                    projectOwnerAddress,
+                    projectDescription,
+                    projectOwnerEmail
+                  )
                 }
                 disabled={isButtonDisabled}
                 className="w-full px-6 py-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold transition-colors disabled:bg-gray-600 disabled:cursor-not-allowed"

@@ -4,11 +4,7 @@ import mongoose, { Schema, Document } from "mongoose";
 export interface IUser extends Document {
   name: string;
   email: string;
-  password: string;
-  walletAddress: string;
-  projects?: mongoose.Types.ObjectId[];
-  listings?: mongoose.Types.ObjectId[];
-  userType: "buyer" | "seller" | "admin" | "auditor";
+  clerkId: string;
 }
 
 const userSchema = new Schema<IUser>(
@@ -17,40 +13,21 @@ const userSchema = new Schema<IUser>(
       type: String,
       required: true,
     },
-    password: {
-      type: String,
-      required: true,
-    },
     email: {
       type: String,
       required: true,
       unique: true,
     },
-    walletAddress: {
+    clerkId: {
       type: String,
       required: true,
       unique: true,
-    },
-    projects: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "Project",
-      },
-    ],
-    listings: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "Listing",
-      },
-    ],
-    userType: {
-      type: String,
-      required: true,
     },
   },
   {
     timestamps: true,
   }
 );
+
 
 export const User = mongoose.model<IUser>("User", userSchema);
