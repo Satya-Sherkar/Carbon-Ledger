@@ -35,7 +35,12 @@ export default function RootLayout({
         theme: dark,
       }}
     >
-      <html lang="en" className={ubuntu.variable}>
+      <html
+        lang="en"
+        className={`${ubuntu.variable} dark`}
+        data-theme="dark"
+        style={{ colorScheme: "dark" }}
+      >
         <body>
           <Providers>
             <Header />
