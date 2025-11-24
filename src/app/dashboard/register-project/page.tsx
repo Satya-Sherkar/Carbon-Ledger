@@ -8,7 +8,7 @@ import {
   useWatchContractEvent,
 } from "wagmi";
 import { MARKETPLACE_ABI, MARKETPLACE_ADDRESS } from "@/constants";
-import SuccessDialog from "@/app/components/successDialog";
+import SuccessDialog from "@/components/successDialog";
 
 export default function RegisterProject() {
   const { isConnected } = useAccount();

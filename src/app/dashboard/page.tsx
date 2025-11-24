@@ -3,8 +3,15 @@
 import { useEffect, useState } from "react";
 import { useUser } from "@clerk/nextjs";
 import Link from "next/link";
-import { Leaf, Plus, Store, TrendingUp, BarChart3, BanknoteArrowUp } from "lucide-react";
-import { ListingCard } from "@/app/components/listingcard";
+import {
+  Leaf,
+  Plus,
+  Store,
+  TrendingUp,
+  BarChart3,
+  BanknoteArrowUp,
+} from "lucide-react";
+import { ListingCard } from "@/components/listingcard";
 import { useReadContract } from "wagmi";
 import { MARKETPLACE_ABI, MARKETPLACE_ADDRESS } from "../../constants";
 

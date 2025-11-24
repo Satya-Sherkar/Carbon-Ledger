@@ -1,12 +1,16 @@
 "use client";
 
-import { ListingCard } from "@/app/components/listingcard";
+import { ListingCard } from "@/components/listingcard";
 import { useReadContract, useBalance } from "wagmi";
+import { MARKETPLACE_ABI, MARKETPLACE_ADDRESS } from "@/constants";
 import {
-  MARKETPLACE_ABI,
-  MARKETPLACE_ADDRESS,
-} from "@/constants";
-import { Leaf, Search, Plus, BanknoteArrowUp, ArrowUpDown, Filter } from "lucide-react";
+  Leaf,
+  Search,
+  Plus,
+  BanknoteArrowUp,
+  ArrowUpDown,
+  Filter,
+} from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -54,21 +58,21 @@ export default function Marketplace() {
             <div className="flex items-center gap-3 bg-white/5 border border-white/10 px-4 py-2 rounded-lg">
               <Leaf className="w-5 h-5 text-emerald-400" />
               <div className="text-right">
-          <div className="text-xs text-gray-400">Listed Credits</div>
-          <div className="text-sm font-semibold text-white">
-            {balance ?? <span className="text-gray-400">Loading...</span>}
-          </div>
+                <div className="text-xs text-gray-400">Listed Credits</div>
+                <div className="text-sm font-semibold text-white">
+                  {balance ?? <span className="text-gray-400">Loading...</span>}
+                </div>
               </div>
             </div>
             <div className="flex items-center gap-3 bg-white/5 border border-white/10 px-4 py-2 rounded-lg">
               <Leaf className="w-5 h-5 text-emerald-400" />
               <div className="text-right">
-          <div className="text-xs text-gray-400">Total Supply</div>
-          <div className="text-sm font-semibold text-white">
-            {formattedSupply ?? (
-              <span className="text-gray-400">Loading...</span>
-            )}
-          </div>
+                <div className="text-xs text-gray-400">Total Supply</div>
+                <div className="text-sm font-semibold text-white">
+                  {formattedSupply ?? (
+                    <span className="text-gray-400">Loading...</span>
+                  )}
+                </div>
               </div>
             </div>
           </div>
@@ -80,17 +84,17 @@ export default function Marketplace() {
             <div className="flex-1 relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
               <input
-              type="text"
-              placeholder="Search projects..."
-              className="w-full bg-white/5 border border-white/10 rounded-lg py-2 pl-10 pr-20 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                type="text"
+                placeholder="Search projects..."
+                className="w-full bg-white/5 border border-white/10 rounded-lg py-2 pl-10 pr-20 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500"
               />
               <div className="absolute right-3 top-1/2 transform -translate-y-1/2 flex gap-2">
-              <button className="text-gray-400 hover:text-emerald-400 transition-colors">
-                <Filter className="w-5 h-5" />
-              </button>
-              <button className="text-gray-400 hover:text-emerald-400 transition-colors">
-                <ArrowUpDown className="w-5 h-5" />
-              </button>
+                <button className="text-gray-400 hover:text-emerald-400 transition-colors">
+                  <Filter className="w-5 h-5" />
+                </button>
+                <button className="text-gray-400 hover:text-emerald-400 transition-colors">
+                  <ArrowUpDown className="w-5 h-5" />
+                </button>
               </div>
             </div>
             <Link
