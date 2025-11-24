@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useUser } from "@clerk/nextjs";
 import Link from "next/link";
-import { Leaf, Plus, Store, TrendingUp, BarChart3 } from "lucide-react";
+import { Leaf, Plus, Store, TrendingUp, BarChart3, BanknoteArrowUp } from "lucide-react";
 import { ListingCard } from "@/app/components/listingcard";
 import { useReadContract } from "wagmi";
 import { MARKETPLACE_ABI, MARKETPLACE_ADDRESS } from "../../constants";
@@ -117,6 +117,13 @@ export default function UserDashboard() {
               >
                 <Plus className="w-5 h-5" />
                 Register Project
+              </Link>
+              <Link
+                href="/dashboard/list-credits"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg transition-colors shadow-sm"
+              >
+                <BanknoteArrowUp className="w-5 h-5" />
+                Sell Your Credits
               </Link>
             </div>
           </div>

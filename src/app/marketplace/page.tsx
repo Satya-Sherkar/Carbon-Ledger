@@ -1,11 +1,17 @@
 "use client";
 
 import { ListingCard } from "@/app/components/listingcard";
-import { useReadContract } from "wagmi";
-import { MARKETPLACE_ABI, MARKETPLACE_ADDRESS } from "../../constants";
-import { Leaf, Search } from "lucide-react";
+import { useReadContract, useBalance } from "wagmi";
+import {
+  MARKETPLACE_ABI,
+  MARKETPLACE_ADDRESS,
+} from "@/constants";
+import { Leaf, Search, Plus, BanknoteArrowUp, ArrowUpDown, Filter } from "lucide-react";
+import Link from "next/link";
+import { useState } from "react";
 
 export default function Marketplace() {
+  const [formattedSupply, setFormattedSupply] = useState<string | null>(null);
   const {
     data: listings,
     isLoading,
@@ -16,30 +22,91 @@ export default function Marketplace() {
     functionName: "getAllListings",
   }) as { data: any[] | undefined; isLoading: boolean; error: Error | null };
 
+  // Get the current balance of listed carbon credits in the marketplace contract
+  const { data: balanceData } = useBalance({
+    address: "0xC891D2fdeC8fc488D295200C3864A89c746f181c",
+    token: "0x77FD397a1E0b010dFAB32547C4496A8f94D82eE1",
+  }) as {
+    data?: { formatted: string };
+    isLoading: boolean;
+    error: Error | null;
+  };
+
+  const balance = balanceData?.formatted;
+
+  // TODO: Get the total supply of the carbon credit token
+
   return (
     <main className="min-h-screen bg-[radial-gradient(ellipse_at_top_right,var(--tw-gradient-stops))] from-black/80 via-slate-900 to-black/95 py-12">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold text-white mb-4">
-            Carbon Credit Marketplace
-          </h1>
-          <p className="text-gray-300 text-lg">
-            Discover and purchase verified carbon credits from global projects
-          </p>
+        <div className="mb-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div>
+            <h1 className="py-2 text-4xl md:text-5xl font-extrabold bg-clip-text text-transparent bg-linear-to-r from-green-400 to-blue-500">
+              Carbon-Ledger Marketplace
+            </h1>
+            <p className="mt-2 text-sm text-gray-400 max-w-2xl">
+              Discover curated, verified carbon credits — buy, sell, and support
+              real-world emissions reductions.
+            </p>
+          </div>
+          <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3 bg-white/5 border border-white/10 px-4 py-2 rounded-lg">
+              <Leaf className="w-5 h-5 text-emerald-400" />
+              <div className="text-right">
+          <div className="text-xs text-gray-400">Listed Credits</div>
+          <div className="text-sm font-semibold text-white">
+            {balance ?? <span className="text-gray-400">Loading...</span>}
+          </div>
+              </div>
+            </div>
+            <div className="flex items-center gap-3 bg-white/5 border border-white/10 px-4 py-2 rounded-lg">
+              <Leaf className="w-5 h-5 text-emerald-400" />
+              <div className="text-right">
+          <div className="text-xs text-gray-400">Total Supply</div>
+          <div className="text-sm font-semibold text-white">
+            {formattedSupply ?? (
+              <span className="text-gray-400">Loading...</span>
+            )}
+          </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Search and Filter Bar */}
         <div className="mb-8 p-4 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10">
-          <div className="flex items-center gap-4">
+          <div className="flex items-center justify-between gap-4">
             <div className="flex-1 relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
               <input
-                type="text"
-                placeholder="Search projects..."
-                className="w-full bg-white/5 border border-white/10 rounded-lg py-2 pl-10 pr-4 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+              type="text"
+              placeholder="Search projects..."
+              className="w-full bg-white/5 border border-white/10 rounded-lg py-2 pl-10 pr-20 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500"
               />
+              <div className="absolute right-3 top-1/2 transform -translate-y-1/2 flex gap-2">
+              <button className="text-gray-400 hover:text-emerald-400 transition-colors">
+                <Filter className="w-5 h-5" />
+              </button>
+              <button className="text-gray-400 hover:text-emerald-400 transition-colors">
+                <ArrowUpDown className="w-5 h-5" />
+              </button>
+              </div>
             </div>
+            <Link
+              href="/dashboard/register-project"
+              className="inline-flex items-center gap-2 px-6 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg transition-colors shadow-sm whitespace-nowrap"
+            >
+              <Plus className="w-5 h-5" />
+              Register Your Project
+            </Link>
+            <Link
+              href="/dashboard/list-credits"
+              className="inline-flex items-center gap-2 px-6 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg transition-colors shadow-sm whitespace-nowrap"
+            >
+              <BanknoteArrowUp className="w-5 h-5" />
+              Sell Your Credits
+            </Link>
           </div>
         </div>
 
