@@ -5,8 +5,10 @@ import {
   useWriteContract,
   useWaitForTransactionReceipt,
   useAccount,
+  useWatchContractEvent,
 } from "wagmi";
-import { MARKETPLACE_ABI, MARKETPLACE_ADDRESS } from "../../../constants";
+import { MARKETPLACE_ABI, MARKETPLACE_ADDRESS } from "@/constants";
+import SuccessDialog from "@/app/components/successDialog";
 
 export default function RegisterProject() {
   const { isConnected } = useAccount();
@@ -20,6 +22,30 @@ export default function RegisterProject() {
   const [projectOwnerAddress, setProjectOwnerAddress] = useState<string>("");
   const [projectDescription, setProjectDescription] = useState<string>("");
   const [projectOwnerEmail, setProjectOwnerEmail] = useState<string>("");
+
+  // Dialog state
+  const [showSuccessDialog, setShowSuccessDialog] = useState(false);
+  const [eventData, setEventData] = useState<any>(null);
+
+  useWatchContractEvent({
+    address: MARKETPLACE_ADDRESS,
+    abi: MARKETPLACE_ABI,
+    eventName: "ProjectRegistered",
+    onLogs: (logs) => {
+      console.log("Project Registered Event Logs:", logs);
+
+      if (logs.length > 0) {
+        const latestLog = logs[logs.length - 1] as any;
+        // Extract event data from the log
+        setEventData({
+          projectId: latestLog.args?.projectId,
+          projectName: latestLog.args?.projectName,
+          owner: latestLog.args?.owner,
+        });
+        setShowSuccessDialog(true);
+      }
+    },
+  });
 
   async function registerProject(
     projectName: string,
@@ -86,7 +112,7 @@ export default function RegisterProject() {
                 onChange={(e) => setProjectName(e.target.value)}
                 className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-400"
               />
-              <label className="text-sm text-gray-300 block mb-2">
+              <label className="text-sm text-gray-300 block mb-2 mt-4">
                 Project Description
               </label>
               <input
@@ -109,7 +135,7 @@ export default function RegisterProject() {
                 onChange={(e) => setProjectOwnerAddress(e.target.value)}
                 className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-400"
               />
-              <label className="text-sm text-gray-300 block mb-2">
+              <label className="text-sm text-gray-300 block mb-2 mt-4">
                 Project Owner Email
               </label>
               <input
@@ -188,6 +214,21 @@ export default function RegisterProject() {
           </div>
         </div>
       </div>
+
+      {/* Success Dialog */}
+      <SuccessDialog
+        isOpen={showSuccessDialog}
+        onClose={() => {
+          setShowSuccessDialog(false);
+          // Reset form
+          setProjectName("");
+          setProjectOwnerAddress("");
+          setProjectDescription("");
+          setProjectOwnerEmail("");
+        }}
+        eventData={eventData}
+        txHash={txHash || ""}
+      />
     </div>
   );
 }
