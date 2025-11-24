@@ -13,7 +13,7 @@ import {
 } from "lucide-react";
 import { ListingCard } from "@/components/listingcard";
 import { useReadContract } from "wagmi";
-import { MARKETPLACE_ABI, MARKETPLACE_ADDRESS } from "../../constants";
+import { MARKETPLACE_ABI, MARKETPLACE_ADDRESS } from "@/constants";
 
 type DbStatus = "checking" | "ok" | "error";
 

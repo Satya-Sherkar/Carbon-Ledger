@@ -3,7 +3,7 @@
 import { formatEther } from "viem";
 import { Leaf, User, DollarSign } from "lucide-react";
 import { useWriteContract } from "wagmi";
-import { MARKETPLACE_ABI, MARKETPLACE_ADDRESS } from "../constants";
+import { MARKETPLACE_ABI, MARKETPLACE_ADDRESS } from "@/constants";
 
 interface Listing {
   credits: bigint;

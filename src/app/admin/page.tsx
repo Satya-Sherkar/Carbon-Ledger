@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useWriteContract, useWaitForTransactionReceipt } from "wagmi";
-import { MARKETPLACE_ABI, MARKETPLACE_ADDRESS } from "../../constants";
+import { MARKETPLACE_ABI, MARKETPLACE_ADDRESS } from "@/constants";
 import { Address } from "viem";
 
 export default function AdminPage() {
