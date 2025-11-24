@@ -44,7 +44,7 @@ export default function CustomConnectButton() {
           <div className="flex gap-4">
             <button
               onClick={openAccountModal}
-              className="px-4 py-2 text-white font-semibold border-2 cursor-pointer hover:scale-105 transform duration-200 ease-linear"
+              className="px-4 py-2 text-white font-semibold border-2 cursor-pointer"
               title="Account Details"
             >
               {account.displayName}

@@ -25,7 +25,7 @@ export default function Header() {
         <SignedOut>
           {showGetStartedButton && (
             <SignInButton>
-              <button className="px-4 py-2 text-white font-semibold border-2 cursor-pointer hover:scale-105 transform duration-200 ease-linear">
+              <button className="px-4 py-2 text-white font-semibold border-2 cursor-pointer">
                 Get Started
               </button>
             </SignInButton>

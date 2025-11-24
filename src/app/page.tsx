@@ -47,12 +47,12 @@ export default function Home() {
             {/* CTA buttons */}
             <div className="flex flex-wrap gap-4">
               <Link href="/marketplace">
-                <button className="px-6 py-3 text-white font-semibold border-2 cursor-pointer hover:scale-105 transform duration-200 ease-linear">
+                <button className="px-6 py-3 text-white font-semibold border-2 cursor-pointer">
                   Explore Marketplace
                 </button>
               </Link>
               <Link href="/dashboard/register-project">
-                <button className="px-6 py-3 text-white font-semibold border-2 cursor-pointer hover:scale-105 transform duration-200 ease-linear">
+                <button className="px-6 py-3 text-white font-semibold border-2 cursor-pointer">
                   Register Your Project
                 </button>
               </Link>
