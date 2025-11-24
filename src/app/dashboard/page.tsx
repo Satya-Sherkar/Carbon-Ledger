@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useUser } from "@clerk/nextjs";
 import Link from "next/link";
 import { Leaf, Plus, Store, TrendingUp, BarChart3 } from "lucide-react";
@@ -7,8 +8,12 @@ import { ListingCard } from "@/app/components/listingcard";
 import { useReadContract } from "wagmi";
 import { MARKETPLACE_ABI, MARKETPLACE_ADDRESS } from "../../constants";
 
+type DbStatus = "checking" | "ok" | "error";
+
 export default function UserDashboard() {
-  const { user } = useUser();
+  const { user, isLoaded, isSignedIn } = useUser(); // use isLoaded/isSignedIn too
+  const [dbStatus, setDbStatus] = useState<DbStatus>("checking");
+  const [dbError, setDbError] = useState<string | null>(null);
 
   const {
     data: listings,
@@ -20,6 +25,77 @@ export default function UserDashboard() {
     functionName: "getAllListings",
   }) as { data: any[] | undefined; isLoading: boolean; error: Error | null };
 
+  // Check / create user in MongoDB once Clerk user is ready
+  useEffect(() => {
+    if (!isLoaded || !isSignedIn || !user) return;
+
+    const email = user.primaryEmailAddress?.emailAddress;
+    const name = `${user.firstName ?? ""} ${user.lastName ?? ""}`.trim();
+    const clerkId = user.id;
+
+    const syncUser = async () => {
+      try {
+        setDbStatus("checking");
+
+        const res = await fetch("/api/save-user", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, email, clerkId }),
+        });
+
+        if (res.status === 201 || res.status === 409) {
+          // 201 = created; 409 = already exists
+          setDbStatus("ok");
+          setDbError(null);
+        } else {
+          const data = await res.json().catch(() => null);
+          setDbStatus("error");
+          setDbError(data?.error || "Failed to sync user with database.");
+        }
+      } catch (err) {
+        console.error(err);
+        setDbStatus("error");
+        setDbError("Unexpected error while contacting the server.");
+      }
+    };
+
+    syncUser();
+  }, [isLoaded, isSignedIn, user]);
+
+  // Handle loading states before main UI
+  if (!isLoaded) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-black text-white">
+        <p>Loading your session...</p>
+      </div>
+    );
+  }
+
+  if (dbStatus === "checking") {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-black text-white">
+        <p>Preparing your dashboard...</p>
+      </div>
+    );
+  }
+
+  if (dbStatus === "error") {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center bg-black text-white px-4 text-center">
+        <p className="text-red-400 font-semibold mb-2">
+          There was a problem setting up your account.
+        </p>
+        <p className="text-gray-300 text-sm mb-4">
+          {dbError ?? "Please try again in a moment."}
+        </p>
+        <p className="text-gray-400 text-xs">
+          If this keeps happening, contact support.
+        </p>
+      </div>
+    );
+  }
+
+  // Normal dashboard UI once DB user is confirmed
   return (
     <div className="relative min-h-screen overflow-hidden bg-[radial-gradient(ellipse_at_top_right,var(--tw-gradient-stops))] from-black/80 via-slate-900 to-black/95 py-12">
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
