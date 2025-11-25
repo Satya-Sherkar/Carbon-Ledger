@@ -33,7 +33,7 @@ export default function CustomConnectButton() {
           return (
             <button
               onClick={openConnectModal}
-              className="px-4 py-2 text-white font-semibold border-2 cursor-pointer hover:scale-105 transform duration-200 ease-linear"
+              className="px-4 py-2 text-white font-semibold border-2 cursor-pointer"
             >
               Connect Wallet
             </button>

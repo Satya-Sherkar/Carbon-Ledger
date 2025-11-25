@@ -36,7 +36,7 @@ export default function Header() {
           {showDashboardButton && (
             <Link
               href="/dashboard"
-              className="px-4 py-2 text-white font-semibold border-2 cursor-pointer hover:scale-105 transform duration-200 ease-linear"
+              className="px-4 py-2 text-white font-semibold border-2 cursor-pointer"
             >
               Dashboard
             </Link>
