@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useSignIn } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const ForgotPasswordPage = () => {
   const { isLoaded, signIn } = useSignIn();
@@ -167,12 +168,12 @@ const ForgotPasswordPage = () => {
         )}
 
         <div className="text-center">
-          <a
+          <Link
             href="/sign-in"
             className="text-sm text-blue-600 hover:text-blue-500"
           >
             Back to sign in
-          </a>
+          </Link>
         </div>
       </div>
     </div>

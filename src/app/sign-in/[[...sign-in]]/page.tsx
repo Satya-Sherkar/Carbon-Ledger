@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useSignIn } from "@clerk/nextjs";
+import Link from "next/link";
 
 const SignInPage = () => {
   const { isLoaded, signIn, setActive } = useSignIn();
@@ -146,12 +147,12 @@ const SignInPage = () => {
             </div>
 
             <div className="text-sm">
-              <a
+              <Link
                 href="/forgot-password"
                 className="font-medium text-blue-600 hover:text-blue-500"
               >
                 Forgot password?
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -196,12 +197,12 @@ const SignInPage = () => {
         <div className="text-center">
           <p className="text-sm text-amber">
             Don't have an account?{" "}
-            <a
+            <Link
               href="/sign-up"
               className="font-medium text-blue-600 hover:text-blue-500"
             >
               Sign up
-            </a>
+            </Link>
           </p>
         </div>
 
