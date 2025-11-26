@@ -41,7 +41,9 @@ export const features: Feature[] = [
   },
 ];
 
-export const MARKETPLACE_ADDRESS = "0xc891d2fdec8fc488d295200c3864a89c746f181c";
+export const MARKETPLACE_ADDRESS = "0xfb74944f29Cd09cCF7cd1e4F9DD1BE09553fbb2f";
+// 0xfb74944f29Cd09cCF7cd1e4F9DD1BE09553fbb2f // new address
+// 0xc891d2fdec8fc488d295200c3864a89c746f181c // old address
 
 export const MARKETPLACE_ABI = [
   {
@@ -155,6 +157,46 @@ export const MARKETPLACE_ABI = [
             name: "isActive",
             type: "bool",
             internalType: "bool",
+          },
+        ],
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getAllProjects",
+    inputs: [],
+    outputs: [
+      {
+        name: "",
+        type: "tuple[]",
+        internalType: "struct CarbonMarketplace.Project[]",
+        components: [
+          {
+            name: "projectId",
+            type: "uint256",
+            internalType: "uint256",
+          },
+          {
+            name: "name",
+            type: "string",
+            internalType: "string",
+          },
+          {
+            name: "owner",
+            type: "address",
+            internalType: "address",
+          },
+          {
+            name: "isVerified",
+            type: "bool",
+            internalType: "bool",
+          },
+          {
+            name: "credits",
+            type: "uint256",
+            internalType: "uint256",
           },
         ],
       },
@@ -657,6 +699,12 @@ export const MARKETPLACE_ABI = [
         indexed: true,
         internalType: "address",
       },
+      {
+        name: "name",
+        type: "string",
+        indexed: true,
+        internalType: "string",
+      },
     ],
     anonymous: false,
   },
@@ -678,6 +726,12 @@ export const MARKETPLACE_ABI = [
       },
       {
         name: "auditor",
+        type: "address",
+        indexed: false,
+        internalType: "address",
+      },
+      {
+        name: "projectOwner",
         type: "address",
         indexed: true,
         internalType: "address",
@@ -1397,6 +1451,6 @@ export const CARBON_CREDIT_TOKEN_ABI = [
 ];
 
 export const CARBON_CREDIT_TOKEN_ADDRESS =
-  "0x77FD397a1E0b010dFAB32547C4496A8f94D82eE1";
+  "0x07eC860dB41185c16545d2508161A6e575258412";
 
 export const DB_NAME = "mongodb";
