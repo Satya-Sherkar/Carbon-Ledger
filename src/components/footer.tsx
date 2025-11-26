@@ -21,7 +21,7 @@ export default function Footer() {
               <Github size={20} />
             </Link>
             <Link
-              href="https://linkedin.com"
+              href="www.linkedin.com/in/satyam-sherkar"
               className="text-gray-600 hover:text-emerald-500"
             >
               <Linkedin size={20} />
