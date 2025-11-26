@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useWriteContract, useWaitForTransactionReceipt } from "wagmi";
 import { MARKETPLACE_ABI, MARKETPLACE_ADDRESS } from "@/constants";
+import { Project } from "@/app/models/project";
 
 export default function AuditorPage() {
   const [projectId, setProjectId] = useState<number | undefined>(undefined);
@@ -15,13 +16,28 @@ export default function AuditorPage() {
       hash: txHash,
     });
 
-  function verifyProject(projectId: number, creditsToMint: number) {
+  async function verifyProject(projectId: number, creditsToMint: number) {
     writeContract({
       abi: MARKETPLACE_ABI,
       address: MARKETPLACE_ADDRESS,
       functionName: "verifyProject",
       args: [projectId, creditsToMint],
     });
+
+    // TODO: save project details to database
+    const response = await fetch("/api/verify-project", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ projectId, creditsToMint }),
+    });
+
+    if (response.ok) {
+      console.log("Project verified successfully");
+    } else {
+      console.error("Failed to verify project");
+    }
   }
 
   return (
