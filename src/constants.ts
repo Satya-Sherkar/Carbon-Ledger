@@ -825,9 +825,68 @@ export const MARKETPLACE_ABI = [
 
 export const CARBON_CREDIT_TOKEN_ABI = [
   {
+    type: "constructor",
+    inputs: [
+      {
+        name: "owner",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    stateMutability: "nonpayable",
+  },
+  {
     type: "function",
-    name: "IS_TEST",
+    name: "OWNER",
     inputs: [],
+    outputs: [
+      {
+        name: "",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "allowance",
+    inputs: [
+      {
+        name: "owner",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "spender",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [
+      {
+        name: "",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "approve",
+    inputs: [
+      {
+        name: "spender",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "value",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
     outputs: [
       {
         name: "",
@@ -835,76 +894,153 @@ export const CARBON_CREDIT_TOKEN_ABI = [
         internalType: "bool",
       },
     ],
-    stateMutability: "view",
+    stateMutability: "nonpayable",
   },
   {
     type: "function",
-    name: "excludeArtifacts",
-    inputs: [],
+    name: "approve_",
+    inputs: [
+      {
+        name: "holder",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "spender",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "value",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "balanceOf",
+    inputs: [
+      {
+        name: "account",
+        type: "address",
+        internalType: "address",
+      },
+    ],
     outputs: [
       {
-        name: "excludedArtifacts_",
-        type: "string[]",
-        internalType: "string[]",
+        name: "",
+        type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "view",
   },
   {
     type: "function",
-    name: "excludeContracts",
+    name: "burn",
+    inputs: [
+      {
+        name: "holder",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "amount",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "decimals",
     inputs: [],
     outputs: [
       {
-        name: "excludedContracts_",
-        type: "address[]",
-        internalType: "address[]",
+        name: "",
+        type: "uint8",
+        internalType: "uint8",
       },
     ],
     stateMutability: "view",
   },
   {
     type: "function",
-    name: "excludeSelectors",
+    name: "mint",
+    inputs: [
+      {
+        name: "to",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "amount",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "name",
     inputs: [],
     outputs: [
       {
-        name: "excludedSelectors_",
-        type: "tuple[]",
-        internalType: "struct StdInvariant.FuzzSelector[]",
-        components: [
-          {
-            name: "addr",
-            type: "address",
-            internalType: "address",
-          },
-          {
-            name: "selectors",
-            type: "bytes4[]",
-            internalType: "bytes4[]",
-          },
-        ],
+        name: "",
+        type: "string",
+        internalType: "string",
       },
     ],
     stateMutability: "view",
   },
   {
     type: "function",
-    name: "excludeSenders",
+    name: "symbol",
     inputs: [],
     outputs: [
       {
-        name: "excludedSenders_",
-        type: "address[]",
-        internalType: "address[]",
+        name: "",
+        type: "string",
+        internalType: "string",
       },
     ],
     stateMutability: "view",
   },
   {
     type: "function",
-    name: "failed",
+    name: "totalSupply",
     inputs: [],
+    outputs: [
+      {
+        name: "",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "transfer",
+    inputs: [
+      {
+        name: "to",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "value",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
     outputs: [
       {
         name: "",
@@ -912,541 +1048,187 @@ export const CARBON_CREDIT_TOKEN_ABI = [
         internalType: "bool",
       },
     ],
-    stateMutability: "view",
-  },
-  {
-    type: "function",
-    name: "setUp",
-    inputs: [],
-    outputs: [],
     stateMutability: "nonpayable",
   },
   {
     type: "function",
-    name: "targetArtifactSelectors",
-    inputs: [],
-    outputs: [
+    name: "transferFrom",
+    inputs: [
       {
-        name: "targetedArtifactSelectors_",
-        type: "tuple[]",
-        internalType: "struct StdInvariant.FuzzArtifactSelector[]",
-        components: [
-          {
-            name: "artifact",
-            type: "string",
-            internalType: "string",
-          },
-          {
-            name: "selectors",
-            type: "bytes4[]",
-            internalType: "bytes4[]",
-          },
-        ],
+        name: "from",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "to",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "value",
+        type: "uint256",
+        internalType: "uint256",
       },
     ],
-    stateMutability: "view",
-  },
-  {
-    type: "function",
-    name: "targetArtifacts",
-    inputs: [],
     outputs: [
       {
-        name: "targetedArtifacts_",
-        type: "string[]",
-        internalType: "string[]",
+        name: "",
+        type: "bool",
+        internalType: "bool",
       },
     ],
-    stateMutability: "view",
-  },
-  {
-    type: "function",
-    name: "targetContracts",
-    inputs: [],
-    outputs: [
-      {
-        name: "targetedContracts_",
-        type: "address[]",
-        internalType: "address[]",
-      },
-    ],
-    stateMutability: "view",
-  },
-  {
-    type: "function",
-    name: "targetInterfaces",
-    inputs: [],
-    outputs: [
-      {
-        name: "targetedInterfaces_",
-        type: "tuple[]",
-        internalType: "struct StdInvariant.FuzzInterface[]",
-        components: [
-          {
-            name: "addr",
-            type: "address",
-            internalType: "address",
-          },
-          {
-            name: "artifacts",
-            type: "string[]",
-            internalType: "string[]",
-          },
-        ],
-      },
-    ],
-    stateMutability: "view",
-  },
-  {
-    type: "function",
-    name: "targetSelectors",
-    inputs: [],
-    outputs: [
-      {
-        name: "targetedSelectors_",
-        type: "tuple[]",
-        internalType: "struct StdInvariant.FuzzSelector[]",
-        components: [
-          {
-            name: "addr",
-            type: "address",
-            internalType: "address",
-          },
-          {
-            name: "selectors",
-            type: "bytes4[]",
-            internalType: "bytes4[]",
-          },
-        ],
-      },
-    ],
-    stateMutability: "view",
-  },
-  {
-    type: "function",
-    name: "targetSenders",
-    inputs: [],
-    outputs: [
-      {
-        name: "targetedSenders_",
-        type: "address[]",
-        internalType: "address[]",
-      },
-    ],
-    stateMutability: "view",
-  },
-  {
-    type: "function",
-    name: "testBurnByAdmin",
-    inputs: [],
-    outputs: [],
     stateMutability: "nonpayable",
-  },
-  {
-    type: "function",
-    name: "testBurnFailsWithLessBalance",
-    inputs: [],
-    outputs: [],
-    stateMutability: "nonpayable",
-  },
-  {
-    type: "function",
-    name: "testInitialSupplyToBeZero",
-    inputs: [],
-    outputs: [],
-    stateMutability: "view",
-  },
-  {
-    type: "function",
-    name: "testMintByAdmin",
-    inputs: [],
-    outputs: [],
-    stateMutability: "nonpayable",
-  },
-  {
-    type: "function",
-    name: "testMintFailsByNonOwner",
-    inputs: [],
-    outputs: [],
-    stateMutability: "nonpayable",
-  },
-  {
-    type: "function",
-    name: "testMintFailsToAddressZero",
-    inputs: [],
-    outputs: [],
-    stateMutability: "nonpayable",
-  },
-  {
-    type: "function",
-    name: "testTokenNameAndSymbol",
-    inputs: [],
-    outputs: [],
-    stateMutability: "view",
   },
   {
     type: "event",
-    name: "log",
+    name: "Approval",
     inputs: [
       {
-        name: "",
-        type: "string",
+        name: "owner",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "spender",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "value",
+        type: "uint256",
         indexed: false,
-        internalType: "string",
+        internalType: "uint256",
       },
     ],
     anonymous: false,
   },
   {
     type: "event",
-    name: "log_address",
+    name: "Transfer",
     inputs: [
       {
-        name: "",
+        name: "from",
         type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "to",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "value",
+        type: "uint256",
         indexed: false,
+        internalType: "uint256",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "error",
+    name: "ERC20InsufficientAllowance",
+    inputs: [
+      {
+        name: "spender",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "allowance",
+        type: "uint256",
+        internalType: "uint256",
+      },
+      {
+        name: "needed",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+  },
+  {
+    type: "error",
+    name: "ERC20InsufficientBalance",
+    inputs: [
+      {
+        name: "sender",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "balance",
+        type: "uint256",
+        internalType: "uint256",
+      },
+      {
+        name: "needed",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+  },
+  {
+    type: "error",
+    name: "ERC20InvalidApprover",
+    inputs: [
+      {
+        name: "approver",
+        type: "address",
         internalType: "address",
       },
     ],
-    anonymous: false,
   },
   {
-    type: "event",
-    name: "log_array",
+    type: "error",
+    name: "ERC20InvalidReceiver",
     inputs: [
       {
-        name: "val",
-        type: "uint256[]",
-        indexed: false,
-        internalType: "uint256[]",
-      },
-    ],
-    anonymous: false,
-  },
-  {
-    type: "event",
-    name: "log_array",
-    inputs: [
-      {
-        name: "val",
-        type: "int256[]",
-        indexed: false,
-        internalType: "int256[]",
-      },
-    ],
-    anonymous: false,
-  },
-  {
-    type: "event",
-    name: "log_array",
-    inputs: [
-      {
-        name: "val",
-        type: "address[]",
-        indexed: false,
-        internalType: "address[]",
-      },
-    ],
-    anonymous: false,
-  },
-  {
-    type: "event",
-    name: "log_bytes",
-    inputs: [
-      {
-        name: "",
-        type: "bytes",
-        indexed: false,
-        internalType: "bytes",
-      },
-    ],
-    anonymous: false,
-  },
-  {
-    type: "event",
-    name: "log_bytes32",
-    inputs: [
-      {
-        name: "",
-        type: "bytes32",
-        indexed: false,
-        internalType: "bytes32",
-      },
-    ],
-    anonymous: false,
-  },
-  {
-    type: "event",
-    name: "log_int",
-    inputs: [
-      {
-        name: "",
-        type: "int256",
-        indexed: false,
-        internalType: "int256",
-      },
-    ],
-    anonymous: false,
-  },
-  {
-    type: "event",
-    name: "log_named_address",
-    inputs: [
-      {
-        name: "key",
-        type: "string",
-        indexed: false,
-        internalType: "string",
-      },
-      {
-        name: "val",
+        name: "receiver",
         type: "address",
-        indexed: false,
         internalType: "address",
       },
     ],
-    anonymous: false,
   },
   {
-    type: "event",
-    name: "log_named_array",
+    type: "error",
+    name: "ERC20InvalidSender",
     inputs: [
       {
-        name: "key",
-        type: "string",
-        indexed: false,
-        internalType: "string",
-      },
-      {
-        name: "val",
-        type: "uint256[]",
-        indexed: false,
-        internalType: "uint256[]",
+        name: "sender",
+        type: "address",
+        internalType: "address",
       },
     ],
-    anonymous: false,
   },
   {
-    type: "event",
-    name: "log_named_array",
+    type: "error",
+    name: "ERC20InvalidSpender",
     inputs: [
       {
-        name: "key",
-        type: "string",
-        indexed: false,
-        internalType: "string",
-      },
-      {
-        name: "val",
-        type: "int256[]",
-        indexed: false,
-        internalType: "int256[]",
+        name: "spender",
+        type: "address",
+        internalType: "address",
       },
     ],
-    anonymous: false,
   },
   {
-    type: "event",
-    name: "log_named_array",
-    inputs: [
-      {
-        name: "key",
-        type: "string",
-        indexed: false,
-        internalType: "string",
-      },
-      {
-        name: "val",
-        type: "address[]",
-        indexed: false,
-        internalType: "address[]",
-      },
-    ],
-    anonymous: false,
+    type: "error",
+    name: "InsufficientBalance",
+    inputs: [],
   },
   {
-    type: "event",
-    name: "log_named_bytes",
-    inputs: [
-      {
-        name: "key",
-        type: "string",
-        indexed: false,
-        internalType: "string",
-      },
-      {
-        name: "val",
-        type: "bytes",
-        indexed: false,
-        internalType: "bytes",
-      },
-    ],
-    anonymous: false,
+    type: "error",
+    name: "InvalidAddress",
+    inputs: [],
   },
   {
-    type: "event",
-    name: "log_named_bytes32",
-    inputs: [
-      {
-        name: "key",
-        type: "string",
-        indexed: false,
-        internalType: "string",
-      },
-      {
-        name: "val",
-        type: "bytes32",
-        indexed: false,
-        internalType: "bytes32",
-      },
-    ],
-    anonymous: false,
-  },
-  {
-    type: "event",
-    name: "log_named_decimal_int",
-    inputs: [
-      {
-        name: "key",
-        type: "string",
-        indexed: false,
-        internalType: "string",
-      },
-      {
-        name: "val",
-        type: "int256",
-        indexed: false,
-        internalType: "int256",
-      },
-      {
-        name: "decimals",
-        type: "uint256",
-        indexed: false,
-        internalType: "uint256",
-      },
-    ],
-    anonymous: false,
-  },
-  {
-    type: "event",
-    name: "log_named_decimal_uint",
-    inputs: [
-      {
-        name: "key",
-        type: "string",
-        indexed: false,
-        internalType: "string",
-      },
-      {
-        name: "val",
-        type: "uint256",
-        indexed: false,
-        internalType: "uint256",
-      },
-      {
-        name: "decimals",
-        type: "uint256",
-        indexed: false,
-        internalType: "uint256",
-      },
-    ],
-    anonymous: false,
-  },
-  {
-    type: "event",
-    name: "log_named_int",
-    inputs: [
-      {
-        name: "key",
-        type: "string",
-        indexed: false,
-        internalType: "string",
-      },
-      {
-        name: "val",
-        type: "int256",
-        indexed: false,
-        internalType: "int256",
-      },
-    ],
-    anonymous: false,
-  },
-  {
-    type: "event",
-    name: "log_named_string",
-    inputs: [
-      {
-        name: "key",
-        type: "string",
-        indexed: false,
-        internalType: "string",
-      },
-      {
-        name: "val",
-        type: "string",
-        indexed: false,
-        internalType: "string",
-      },
-    ],
-    anonymous: false,
-  },
-  {
-    type: "event",
-    name: "log_named_uint",
-    inputs: [
-      {
-        name: "key",
-        type: "string",
-        indexed: false,
-        internalType: "string",
-      },
-      {
-        name: "val",
-        type: "uint256",
-        indexed: false,
-        internalType: "uint256",
-      },
-    ],
-    anonymous: false,
-  },
-  {
-    type: "event",
-    name: "log_string",
-    inputs: [
-      {
-        name: "",
-        type: "string",
-        indexed: false,
-        internalType: "string",
-      },
-    ],
-    anonymous: false,
-  },
-  {
-    type: "event",
-    name: "log_uint",
-    inputs: [
-      {
-        name: "",
-        type: "uint256",
-        indexed: false,
-        internalType: "uint256",
-      },
-    ],
-    anonymous: false,
-  },
-  {
-    type: "event",
-    name: "logs",
-    inputs: [
-      {
-        name: "",
-        type: "bytes",
-        indexed: false,
-        internalType: "bytes",
-      },
-    ],
-    anonymous: false,
+    type: "error",
+    name: "UnauthorizedAccount",
+    inputs: [],
   },
 ];
 
