@@ -5,7 +5,6 @@ import {
   useWriteContract,
   useWaitForTransactionReceipt,
   useAccount,
-  useWatchContractEvent,
   useReadContract,
 } from "wagmi";
 import { MARKETPLACE_ABI, MARKETPLACE_ADDRESS } from "@/constants";
@@ -27,27 +26,6 @@ export default function RegisterProject() {
   // Dialog state
   const [showSuccessDialog, setShowSuccessDialog] = useState(false);
   const [eventData, setEventData] = useState<any>(null);
-
-  useWatchContractEvent({
-    address: MARKETPLACE_ADDRESS,
-    abi: MARKETPLACE_ABI,
-    eventName: "ProjectRegistered",
-    onLogs: (logs) => {
-      console.log("Project Registered Event Logs:", logs);
-
-      if (logs.length > 0) {
-        const latestLog = logs[logs.length - 1] as any;
-        // Extract event data from the log
-        setEventData({
-          projectId: latestLog.args?.projectId,
-          projectName: latestLog.args?.projectName,
-          owner: latestLog.args?.owner,
-        });
-        setShowSuccessDialog(true);
-      }
-    },
-  });
-
   const { data: nextProjectId } = useReadContract({
     address: MARKETPLACE_ADDRESS,
     abi: MARKETPLACE_ABI,
@@ -88,6 +66,13 @@ export default function RegisterProject() {
       },
       body: JSON.stringify(body),
     });
+
+    setEventData({
+      projectId: nextProjectId,
+      projectName: projectName,
+      owner: projectOwnerAddress,
+    });
+    setShowSuccessDialog(true);
   }
 
   const isButtonDisabled =
