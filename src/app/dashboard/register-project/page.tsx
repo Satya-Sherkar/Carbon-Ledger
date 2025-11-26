@@ -6,6 +6,7 @@ import {
   useWaitForTransactionReceipt,
   useAccount,
   useWatchContractEvent,
+  useReadContract,
 } from "wagmi";
 import { MARKETPLACE_ABI, MARKETPLACE_ADDRESS } from "@/constants";
 import SuccessDialog from "@/components/successDialog";
@@ -47,6 +48,12 @@ export default function RegisterProject() {
     },
   });
 
+  const { data: nextProjectId } = useReadContract({
+    address: MARKETPLACE_ADDRESS,
+    abi: MARKETPLACE_ABI,
+    functionName: "nextProjectId",
+  });
+
   async function registerProject(
     projectName: string,
     projectOwner: string,
@@ -65,18 +72,21 @@ export default function RegisterProject() {
       args: [projectName, projectOwner],
     });
 
+    const body = {
+      title: projectName,
+      ownerWalletAddress: projectOwner,
+      description: projectDescription,
+      ownerEmail: projectOwnerEmail,
+      projectId: nextProjectId?.toString(),
+    };
+
     // save additional project details to your backend or database here
     await fetch("/api/register-project", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        title: projectName,
-        ownerWalletAddress: projectOwner,
-        description: projectDescription,
-        ownerEmail: projectOwnerEmail,
-      }),
+      body: JSON.stringify(body),
     });
   }
 

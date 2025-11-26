@@ -12,11 +12,11 @@ export async function POST(req: NextRequest) {
   }
   
     try {
-      const { title, description, ownerEmail, ownerWalletAddress } =
+      const { title, description, ownerEmail, ownerWalletAddress, projectId } =
         await req.json();
       
       // validations
-      if (!title || !description || !ownerEmail || !ownerWalletAddress) {
+      if (!title || !description || !ownerEmail || !ownerWalletAddress || !projectId) {
         return NextResponse.json(
           { error: "All fields are required" },
           { status: 400 }
@@ -34,6 +34,7 @@ export async function POST(req: NextRequest) {
         description,
         owner: owner,
         ownerWalletAddress,
+        projectId,
       });
 
       await project.save();
