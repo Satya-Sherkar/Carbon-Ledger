@@ -18,7 +18,7 @@ import { MARKETPLACE_ABI, MARKETPLACE_ADDRESS } from "@/constants";
 type DbStatus = "checking" | "ok" | "error";
 
 export default function UserDashboard() {
-  const { user, isLoaded, isSignedIn } = useUser(); // use isLoaded/isSignedIn too
+  const { user, isLoaded, isSignedIn } = useUser();
   const [dbStatus, setDbStatus] = useState<DbStatus>("checking");
   const [dbError, setDbError] = useState<string | null>(null);
 

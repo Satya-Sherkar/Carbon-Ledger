@@ -1,8 +1,14 @@
 "use client";
 
+import Link from "next/link";
 import { ListingCard } from "@/components/listingcard";
 import { useReadContract, useBalance } from "wagmi";
-import { MARKETPLACE_ABI, MARKETPLACE_ADDRESS } from "@/constants";
+import {
+  MARKETPLACE_ABI,
+  MARKETPLACE_ADDRESS,
+  CARBON_CREDIT_TOKEN_ADDRESS,
+  CARBON_CREDIT_TOKEN_ABI,
+} from "@/constants";
 import {
   Leaf,
   Search,
@@ -11,11 +17,8 @@ import {
   ArrowUpDown,
   Filter,
 } from "lucide-react";
-import Link from "next/link";
-import { useState } from "react";
 
 export default function Marketplace() {
-  const [formattedSupply, setFormattedSupply] = useState<string | null>(null);
   const {
     data: listings,
     isLoading,
@@ -28,17 +31,22 @@ export default function Marketplace() {
 
   // Get the current balance of listed carbon credits in the marketplace contract
   const { data: balanceData } = useBalance({
-    address: "0xC891D2fdeC8fc488D295200C3864A89c746f181c",
-    token: "0x77FD397a1E0b010dFAB32547C4496A8f94D82eE1",
+    address: MARKETPLACE_ADDRESS,
+    token: CARBON_CREDIT_TOKEN_ADDRESS,
   }) as {
     data?: { formatted: string };
     isLoading: boolean;
     error: Error | null;
   };
 
-  const balance = balanceData?.formatted;
+  const listedCredits = balanceData?.formatted;
 
-  // TODO: Get the total supply of the carbon credit token
+  // The total supply of the carbon credit token
+  const { data: totalSupply }: { data?: bigint } = useReadContract({
+    address: CARBON_CREDIT_TOKEN_ADDRESS,
+    abi: CARBON_CREDIT_TOKEN_ABI,
+    functionName: "totalSupply",
+  });
 
   return (
     <main className="min-h-screen bg-[radial-gradient(ellipse_at_top_right,var(--tw-gradient-stops))] from-black/80 via-slate-900 to-black/95 py-12">
@@ -60,7 +68,9 @@ export default function Marketplace() {
               <div className="text-right">
                 <div className="text-xs text-gray-400">Listed Credits</div>
                 <div className="text-sm font-semibold text-white">
-                  {balance ?? <span className="text-gray-400">Loading...</span>}
+                  {listedCredits ?? (
+                    <span className="text-gray-400">Loading...</span>
+                  )}
                 </div>
               </div>
             </div>
@@ -69,7 +79,7 @@ export default function Marketplace() {
               <div className="text-right">
                 <div className="text-xs text-gray-400">Total Supply</div>
                 <div className="text-sm font-semibold text-white">
-                  {formattedSupply ?? (
+                  {totalSupply ?? (
                     <span className="text-gray-400">Loading...</span>
                   )}
                 </div>
