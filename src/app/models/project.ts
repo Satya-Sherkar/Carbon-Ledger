@@ -8,6 +8,7 @@ export interface IProject extends Document {
   ownerWalletAddress: string;
   isVerified: boolean;
   credits: number;
+  projectId: number;
 }
 
 const projectSchema = new Schema<IProject>(
@@ -38,6 +39,11 @@ const projectSchema = new Schema<IProject>(
       type: Number,
       required: true,
       default: 0,
+    },
+    projectId: {
+      type: Number,
+      required: true,
+      unique: true,
     },
   },
   {
