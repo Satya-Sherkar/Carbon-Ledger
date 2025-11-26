@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useWriteContract, useWaitForTransactionReceipt } from "wagmi";
 import { MARKETPLACE_ABI, MARKETPLACE_ADDRESS } from "@/constants";
-import { Project } from "@/app/models/project";
+import SuccessDialog from "@/components/verificationSuccessDialog";
 
 export default function AuditorPage() {
   const [projectId, setProjectId] = useState<number | undefined>(undefined);
@@ -16,6 +16,9 @@ export default function AuditorPage() {
       hash: txHash,
     });
 
+  const [showSuccessDialog, setShowSuccessDialog] = useState(false);
+  const [eventData, setEventData] = useState<any>(null);
+
   async function verifyProject(projectId: number, creditsToMint: number) {
     writeContract({
       abi: MARKETPLACE_ABI,
@@ -24,7 +27,7 @@ export default function AuditorPage() {
       args: [projectId, creditsToMint],
     });
 
-    // TODO: save project details to database
+    // Save project details to database
     const response = await fetch("/api/verify-project", {
       method: "POST",
       headers: {
@@ -36,8 +39,16 @@ export default function AuditorPage() {
     if (response.ok) {
       console.log("Project verified successfully");
     } else {
-      console.error("Failed to verify project");
+      console.error("Failed to store in Database");
     }
+
+    setEventData({
+      projectId,
+      creditsMinted: creditsToMint,
+    });
+
+    setShowSuccessDialog(true);
+    
   }
 
   return (
@@ -148,6 +159,16 @@ export default function AuditorPage() {
           </div>
         </div>
       </div>
+      { isConfirmed && (<SuccessDialog
+        isOpen={showSuccessDialog}
+        onClose={() => {
+          setShowSuccessDialog(false);
+          setProjectId(undefined);
+          setCreditsToMint(undefined);
+        }}
+        eventData={eventData}
+        txHash={txHash || ""}
+      />)}
     </div>
   );
 }
