@@ -184,8 +184,8 @@ The platform uses a modular smart contract architecture:
 
 | Contract | Address | Explorer |
 |----------|---------|----------|
-| Carbon Credit Token | `TBD` | [View on Etherscan](https://sepolia.etherscan.io) |
-| Marketplace | `TBD` | [View on Etherscan](https://sepolia.etherscan.io) |
+| Carbon Credit Token | `0x07eC860dB41185c16545d2508161A6e575258412` | [View on Etherscan](https://sepolia.etherscan.io/address/0x07eC860dB41185c16545d2508161A6e575258412) |
+| Marketplace | `0xfb74944f29Cd09cCF7cd1e4F9DD1BE09553fbb2f` | [View on Etherscan](https://sepolia.etherscan.io/address/0xfb74944f29Cd09cCF7cd1e4F9DD1BE09553fbb2f) |
 
 ---
 
