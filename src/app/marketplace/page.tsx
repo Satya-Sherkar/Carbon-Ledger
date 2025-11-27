@@ -52,36 +52,40 @@ export default function Marketplace() {
     <main className="min-h-screen bg-[radial-gradient(ellipse_at_top_right,var(--tw-gradient-stops))] from-black/80 via-slate-900 to-black/95 py-12">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
-        <div className="mb-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-          <div>
-            <h1 className="py-2 text-4xl md:text-5xl font-extrabold bg-clip-text text-transparent bg-linear-to-r from-green-400 to-blue-500">
+        <div className="mb-8 flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+          <div className="text-center md:text-left">
+            <h1 className="py-2 text-3xl md:text-5xl font-extrabold bg-clip-text text-transparent bg-linear-to-r from-green-400 to-blue-500">
               Carbon-Ledger Marketplace
             </h1>
-            <p className="mt-2 text-sm text-gray-400 max-w-2xl">
+            <p className="mx-auto mt-2 max-w-2xl text-sm text-gray-400 md:mx-0">
               Discover curated, verified carbon credits — buy, sell, and support
               real-world emissions reductions.
             </p>
           </div>
-          <div className="flex items-center gap-4">
-            <div className="flex items-center gap-3 bg-white/5 border border-white/10 px-4 py-2 rounded-lg">
-              <Leaf className="w-5 h-5 text-emerald-400" />
-              <div className="text-right">
-                <div className="text-xs text-gray-400">Listed Credits</div>
-                <div className="text-sm font-semibold text-white">
-                  {listedCredits ?? (
-                    <span className="text-gray-400">Loading...</span>
-                  )}
+          <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap md:justify-end">
+            <div className="flex justify-end sm:justify-start">
+              <div className="inline-flex items-center gap-3 rounded-lg border border-white/10 bg-white/5 px-4 py-2">
+                <Leaf className="h-5 w-5 text-emerald-400" />
+                <div className="text-right">
+                  <div className="text-xs text-gray-400">Listed Credits</div>
+                  <div className="text-sm font-semibold text-white">
+                    {listedCredits ?? (
+                      <span className="text-gray-400">Loading...</span>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
-            <div className="flex items-center gap-3 bg-white/5 border border-white/10 px-4 py-2 rounded-lg">
-              <Leaf className="w-5 h-5 text-emerald-400" />
-              <div className="text-right">
-                <div className="text-xs text-gray-400">Total Supply</div>
-                <div className="text-sm font-semibold text-white">
-                  {totalSupply ?? (
-                    <span className="text-gray-400">Loading...</span>
-                  )}
+            <div className="flex justify-end sm:justify-start">
+              <div className="inline-flex items-center gap-3 rounded-lg border border-white/10 bg-white/5 px-4 py-2">
+                <Leaf className="h-5 w-5 text-emerald-400" />
+                <div className="text-right">
+                  <div className="text-xs text-gray-400">Total Supply</div>
+                  <div className="text-sm font-semibold text-white">
+                    {totalSupply ?? (
+                      <span className="text-gray-400">Loading...</span>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
@@ -89,38 +93,41 @@ export default function Marketplace() {
         </div>
 
         {/* Search and Filter Bar */}
-        <div className="mb-8 p-4 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10">
-          <div className="flex items-center justify-between gap-4">
-            <div className="flex-1 relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+        <div className="mb-8 rounded-lg border border-white/10 bg-white/5 p-4 backdrop-blur-sm">
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:gap-6">
+            <div className="relative flex-1">
+              <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
               <input
                 type="text"
                 placeholder="Search projects..."
-                className="w-full bg-white/5 border border-white/10 rounded-lg py-2 pl-10 pr-20 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                className="w-full rounded-lg border border-white/10 bg-white/5 py-2 pl-10 pr-24 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500"
               />
-              <div className="absolute right-3 top-1/2 transform -translate-y-1/2 flex gap-2">
-                <button className="text-gray-400 hover:text-emerald-400 transition-colors">
-                  <Filter className="w-5 h-5" />
+              <div className="absolute right-3 top-1/2 flex -translate-y-1/2 gap-2">
+                <button className="text-gray-400 transition-colors hover:text-emerald-400">
+                  <Filter className="h-5 w-5" />
                 </button>
-                <button className="text-gray-400 hover:text-emerald-400 transition-colors">
-                  <ArrowUpDown className="w-5 h-5" />
+                <button className="text-gray-400 transition-colors hover:text-emerald-400">
+                  <ArrowUpDown className="h-5 w-5" />
                 </button>
               </div>
             </div>
-            <Link
-              href="/dashboard/register-project"
-              className="inline-flex items-center gap-2 px-6 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg transition-colors shadow-sm whitespace-nowrap"
-            >
-              <Plus className="w-5 h-5" />
-              Register Your Project
-            </Link>
-            <Link
-              href="/dashboard/list-credits"
-              className="inline-flex items-center gap-2 px-6 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg transition-colors shadow-sm whitespace-nowrap"
-            >
-              <BanknoteArrowUp className="w-5 h-5" />
-              Sell Your Credits
-            </Link>
+
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <Link
+                href="/dashboard/register-project"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-emerald-600 px-6 py-2 font-semibold text-white shadow-sm transition-colors hover:bg-emerald-700 sm:w-auto"
+              >
+                <Plus className="h-5 w-5" />
+                Register Your Project
+              </Link>
+              <Link
+                href="/dashboard/list-credits"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-emerald-600 px-6 py-2 font-semibold text-white shadow-sm transition-colors hover:bg-emerald-700 sm:w-auto"
+              >
+                <BanknoteArrowUp className="h-5 w-5" />
+                Sell Your Credits
+              </Link>
+            </div>
           </div>
         </div>
 

@@ -33,7 +33,7 @@ export default function CustomConnectButton() {
           return (
             <button
               onClick={openConnectModal}
-              className="px-4 py-2 text-white font-semibold border-2 cursor-pointer"
+              className="px-4 py-2 text-white font-semibold border-2 cursor-pointer hover:bg-white/10 rounded-md"
             >
               Connect Wallet
             </button>
@@ -44,7 +44,7 @@ export default function CustomConnectButton() {
           <div className="flex gap-4">
             <button
               onClick={openAccountModal}
-              className="px-4 py-2 text-white font-semibold border-2 cursor-pointer"
+              className="px-4 py-2 text-white font-semibold border-2 cursor-pointer hover:bg-white/10 rounded-md"
               title="Account Details"
             >
               {account.displayName}

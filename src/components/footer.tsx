@@ -2,52 +2,50 @@ import { Twitter, Github, Linkedin } from "lucide-react";
 import Link from "next/link";
 
 export default function Footer() {
-    const date = new Date().getFullYear();
-    return (
-      <footer>
-        <div className="flex justify-center bg-transparent p-4">
-          <p>&copy; {date} Carbon Marketplace. All rights reserved.</p>
-          <div className="flex gap-6 ml-8">
+  const date = new Date().getFullYear();
+
+  return (
+    <footer>
+      <div className="mx-auto flex w-full max-w-6xl flex-col gap-6 px-4 py-6 text-center sm:px-6 md:flex-row md:items-center md:justify-between md:text-left">
+        <p className="text-sm text-gray-600">
+          &copy; {date} Carbon Marketplace. All rights reserved.
+        </p>
+
+        <div className="flex flex-col items-center gap-4 md:flex-row md:gap-6">
+          <div className="flex items-center gap-4">
             <Link
               href="https://twitter.com"
-              className="text-gray-600 hover:text-emerald-500"
+              className="text-gray-600 transition hover:text-emerald-500"
             >
               <Twitter size={20} />
             </Link>
             <Link
               href="https://github.com/Satya-Sherkar/Carbon-Ledger"
-              className="text-gray-600 hover:text-emerald-500"
+              className="text-gray-600 transition hover:text-emerald-500"
             >
               <Github size={20} />
             </Link>
             <Link
-              href="www.linkedin.com/in/satyam-sherkar"
-              className="text-gray-600 hover:text-emerald-500"
+              href="https://www.linkedin.com/in/satyam-sherkar"
+              className="text-gray-600 transition hover:text-emerald-500"
             >
               <Linkedin size={20} />
             </Link>
           </div>
-          <div className="flex gap-6 ml-8">
-            <Link
-              href="/docs"
-              className="text-gray-600 hover:text-emerald-500 text-sm"
-            >
+
+          <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-gray-600">
+            <Link href="/docs" className="transition hover:text-emerald-500">
               Docs
             </Link>
-            <Link
-              href="/privacy"
-              className="text-gray-600 hover:text-emerald-500 text-sm"
-            >
+            <Link href="/privacy" className="transition hover:text-emerald-500">
               Privacy
             </Link>
-            <Link
-              href="/terms"
-              className="text-gray-600 hover:text-emerald-500 text-sm"
-            >
+            <Link href="/terms" className="transition hover:text-emerald-500">
               Terms
             </Link>
           </div>
         </div>
-      </footer>
-    );
+      </div>
+    </footer>
+  );
 }

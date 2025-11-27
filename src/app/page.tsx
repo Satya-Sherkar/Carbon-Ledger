@@ -1,5 +1,3 @@
-"use client";
-
 import { features } from "../constants";
 import Link from "next/link";
 import Image from "next/image";
@@ -46,14 +44,17 @@ export default function Home() {
             </div>
 
             {/* CTA buttons */}
-            <div className="flex flex-wrap gap-4">
-              <Link href="/marketplace">
-                <button className="px-6 py-3 text-white font-semibold border-2 cursor-pointer">
+            <div className="flex w-full flex-col gap-4 sm:flex-row sm:flex-wrap">
+              <Link href="/marketplace" className="flex-1 min-w-[220px]">
+                <button className="w-full rounded-md border-2 px-6 py-3 font-semibold text-white transition hover:bg-white/10">
                   Explore Marketplace
                 </button>
               </Link>
-              <Link href="/dashboard/register-project">
-                <button className="px-6 py-3 text-white font-semibold border-2 cursor-pointer">
+              <Link
+                href="/dashboard/register-project"
+                className="flex-1 min-w-[220px]"
+              >
+                <button className="w-full rounded-md border-2 px-6 py-3 font-semibold text-white transition hover:bg-white/10">
                   Register Your Project
                 </button>
               </Link>
@@ -93,7 +94,7 @@ export default function Home() {
               {features.map((feature, index) => (
                 <div
                   key={index}
-                  className="group p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 hover:scale-105 transform"
+                  className="group p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300"
                 >
                   <div className="mb-3">
                     <feature.icon className="w-10 h-10 text-green-200 group-hover:text-green-400 transition-colors duration-300" />
