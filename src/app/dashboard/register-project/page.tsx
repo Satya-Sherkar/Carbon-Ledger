@@ -211,7 +211,7 @@ export default function RegisterProject() {
       </div>
 
       {/* Success Dialog */}
-      <SuccessDialog
+      {isConfirmed &&(<SuccessDialog
         isOpen={showSuccessDialog}
         onClose={() => {
           setShowSuccessDialog(false);
@@ -223,7 +223,7 @@ export default function RegisterProject() {
         }}
         eventData={eventData}
         txHash={txHash || ""}
-      />
+      />)}
     </div>
   );
 }

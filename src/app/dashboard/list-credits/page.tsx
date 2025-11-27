@@ -18,7 +18,7 @@ export default function ListCreditsPage() {
 
   const [creditAmount, setCreditAmount] = useState<number | "">("");
   const [perCreditPrice, setPerCreditPrice] = useState<number | "">("");
-
+  const [projectId, setProjectId] = useState<number | "">("");
 
   async function listCreditsForSell(
     creditAmountInput: number | "",
@@ -40,17 +40,18 @@ export default function ListCreditsPage() {
         args: [amount, price],
       });
 
-      // save listing metadata to backend
-    //   await fetch("/api/list-credits", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify({
-    //       amount,
-    //       pricePerCredit: price,
-    //     }),
-    //   });
+      // save listing data to database
+      await fetch("/api/list-credits", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          creditAmount: amount,
+          pricePerCredit: price,
+          projectId: projectId,
+        }),
+      });
     } catch (err) {
       console.error("Error listing credits:", err);
     }
@@ -76,6 +77,20 @@ export default function ListCreditsPage() {
         <div className="p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
           <div className="space-y-6">
             <div>
+              <label className="text-sm text-gray-300 block mb-2">
+                Project ID
+              </label>
+              <input
+                type="number"
+                placeholder="Your Project ID"
+                value={projectId}
+                onChange={(e) =>
+                  setProjectId(
+                    e.target.value === "" ? "" : Number(e.target.value)
+                  )
+                }
+                className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-400"
+              />
               <label className="text-sm text-gray-300 block mb-2">
                 Credit Amount
               </label>

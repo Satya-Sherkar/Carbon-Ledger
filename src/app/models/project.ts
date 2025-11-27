@@ -9,6 +9,8 @@ export interface IProject extends Document {
   isVerified: boolean;
   credits: number;
   projectId: number;
+  isListed: boolean;
+  pricePerCredit: number;
 }
 
 const projectSchema = new Schema<IProject>(
@@ -44,6 +46,16 @@ const projectSchema = new Schema<IProject>(
       type: Number,
       required: true,
       unique: true,
+    },
+    isListed: {
+      type: Boolean,
+      required: true,
+      default: false,
+    },
+    pricePerCredit: {
+      type: Number,
+      required: true,
+      default: 0,
     },
   },
   {
