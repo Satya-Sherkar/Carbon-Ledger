@@ -2,6 +2,7 @@
 
 import { features } from "../constants";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -94,7 +95,9 @@ export default function Home() {
                   key={index}
                   className="group p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 hover:scale-105 transform"
                 >
-                  <div className="text-4xl mb-3">{feature.icon}</div>
+                  <div className="mb-3">
+                    <feature.icon className="w-10 h-10 text-green-200 group-hover:text-green-400 transition-colors duration-300" />
+                  </div>
                   <h3 className="text-lg font-semibold text-white mb-2">
                     {feature.title}
                   </h3>
@@ -106,9 +109,14 @@ export default function Home() {
             </div>
             {/* Blockchain badge */}
             <div className="p-6 rounded-xl bg-linear-to-r from-blue-500/10 to-green-500/10 border border-blue-500/20">
-              <div className="flex items-start gap-4">
-                <div className="shrink-0 w-12 h-12 rounded-lg bg-linear-to-br from-blue-500 to-green-500 flex items-center justify-center text-2xl">
-                  ⛓️
+              <div className="flex items-center gap-4">
+                <div className="shrink-0 flex items-center justify-center">
+                  <Image
+                    src="/ethereum-logo-colored.svg"
+                    alt="Ethereum"
+                    width={48}
+                    height={48}
+                  />
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-white mb-1">

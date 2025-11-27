@@ -1,41 +1,44 @@
+import React from "react";
+import { Link, Globe, Zap, Shield, Activity, Coins } from "lucide-react";
+
 type Feature = {
-  icon: string;
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   title: string;
   description: string;
 };
 
 export const features: Feature[] = [
   {
-    icon: "🔗",
+    icon: Link,
     title: "Blockchain Verified",
     description:
       "Every credit is tokenized and verified on-chain for complete transparency",
   },
   {
-    icon: "🌍",
+    icon: Globe,
     title: "Global Projects",
     description:
       "Access verified carbon reduction projects from around the world",
   },
   {
-    icon: "⚡",
+    icon: Zap,
     title: "Instant Trading",
     description:
       "Trade carbon credits instantly with smart contract automation",
   },
   {
-    icon: "🔒",
+    icon: Shield,
     title: "Secure & Compliant",
     description:
       "Built with enterprise-grade security and regulatory compliance",
   },
   {
-    icon: "📊",
+    icon: Activity,
     title: "Real-Time Tracking",
     description: "Monitor your portfolio and impact with live blockchain data",
   },
   {
-    icon: "💎",
+    icon: Coins,
     title: "Tokenized Credits",
     description: "Convert carbon credits into tradable digital assets on DeFi",
   },
