@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { ListingCard } from "@/components/listingcard";
 import { useReadContract, useBalance } from "wagmi";
+import { formatEther } from "viem";
 import {
   MARKETPLACE_ABI,
   MARKETPLACE_ADDRESS,
@@ -48,6 +49,8 @@ export default function Marketplace() {
     functionName: "totalSupply",
   });
 
+  const totalSupplyFormatted = formatEther(totalSupply ?? BigInt(0));
+
   return (
     <main className="min-h-screen bg-[radial-gradient(ellipse_at_top_right,var(--tw-gradient-stops))] from-black/80 via-slate-900 to-black/95 py-12">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -82,7 +85,9 @@ export default function Marketplace() {
                 <div className="text-right">
                   <div className="text-xs text-gray-400">Total Supply</div>
                   <div className="text-sm font-semibold text-white">
-                    {totalSupply ?? (
+                    {totalSupplyFormatted ? (
+                      `${totalSupplyFormatted} CCT`
+                    ) : (
                       <span className="text-gray-400">Loading...</span>
                     )}
                   </div>
