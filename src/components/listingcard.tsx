@@ -36,7 +36,7 @@ export function ListingCard({ listing, listingId }: ListingCardProps) {
   }
 
   return (
-    <div className="bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 overflow-hidden group hover:scale-105 transform duration-300 ease-linear">
+    <div className="bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 overflow-hidden group">
       {/* Status Badge */}
       <div className="relative bg-emerald-900/40 p-4">
         <div className="flex items-center justify-between">
