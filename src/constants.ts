@@ -44,9 +44,8 @@ export const features: Feature[] = [
   },
 ];
 
-export const MARKETPLACE_ADDRESS = "0xfb74944f29Cd09cCF7cd1e4F9DD1BE09553fbb2f";
-// 0xfb74944f29Cd09cCF7cd1e4F9DD1BE09553fbb2f // new address
-// 0xc891d2fdec8fc488d295200c3864a89c746f181c // old address
+export const MARKETPLACE_ADDRESS = "0x415b752b669222747769c7c3e0656fc85798e687";
+// 0xfb74944f29Cd09cCF7cd1e4F9DD1BE09553fbb2f // old address
 
 export const MARKETPLACE_ABI = [
   {
@@ -901,10 +900,10 @@ export const CARBON_CREDIT_TOKEN_ABI = [
   },
   {
     type: "function",
-    name: "approve_",
+    name: "approve",
     inputs: [
       {
-        name: "holder",
+        name: "owner",
         type: "address",
         internalType: "address",
       },
@@ -914,7 +913,7 @@ export const CARBON_CREDIT_TOKEN_ABI = [
         internalType: "address",
       },
       {
-        name: "value",
+        name: "amount",
         type: "uint256",
         internalType: "uint256",
       },
@@ -946,7 +945,7 @@ export const CARBON_CREDIT_TOKEN_ABI = [
     name: "burn",
     inputs: [
       {
-        name: "holder",
+        name: "owner",
         type: "address",
         internalType: "address",
       },
@@ -977,7 +976,7 @@ export const CARBON_CREDIT_TOKEN_ABI = [
     name: "mint",
     inputs: [
       {
-        name: "to",
+        name: "receiver",
         type: "address",
         internalType: "address",
       },
@@ -1220,22 +1219,27 @@ export const CARBON_CREDIT_TOKEN_ABI = [
   },
   {
     type: "error",
-    name: "InsufficientBalance",
+    name: "Insufficient_owner_balance",
     inputs: [],
   },
   {
     type: "error",
-    name: "InvalidAddress",
+    name: "Invalid_owner_or_amount",
     inputs: [],
   },
   {
     type: "error",
-    name: "UnauthorizedAccount",
+    name: "Invalid_receiver_or_amount",
+    inputs: [],
+  },
+  {
+    type: "error",
+    name: "Not_Owner",
     inputs: [],
   },
 ];
 
 export const CARBON_CREDIT_TOKEN_ADDRESS =
-  "0x07eC860dB41185c16545d2508161A6e575258412";
+  "0xdcc623b2107f1527d65a8e451d91638a9c85cb48";
 
 export const DB_NAME = "mongodb";
