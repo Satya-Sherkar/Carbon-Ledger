@@ -7,10 +7,8 @@ import Link from "next/link";
 
 export default function Header() {
   const pathname = usePathname();
-  const showGetStartedButton =
-    pathname !== "/sign-in" && pathname !== "/sign-up"; 
+  const showGetStartedButton = pathname == "/" || pathname == "/marketplace";
   const showDashboardButton = pathname !== "/dashboard";
-  const showConnectWalletButton = pathname !== "/";
 
   return (
     <header className="flex justify-between items-center px-6 py-4 bg-transparent shadow-sm  h-16">
@@ -41,9 +39,8 @@ export default function Header() {
               Dashboard
             </Link>
           )}
+          <CustomConnectButton />
         </SignedIn>
-
-        {showConnectWalletButton && <CustomConnectButton />}
       </div>
     </header>
   );
