@@ -21,8 +21,8 @@ export function ListingCard({ listing, listingId }: ListingCardProps) {
   const { credits, seller, pricePerCredit, isActive } = listing;
 
   const totalPrice = (
-    Number(credits) * Number(formatEther(pricePerCredit))
-  ).toFixed(4);
+    Number(formatEther(credits)) * Number(formatEther(pricePerCredit))
+  ).toFixed(9);
   const formattedPrice = formatEther(pricePerCredit);
 
   const { writeContract } = useWriteContract();
@@ -68,7 +68,7 @@ export function ListingCard({ listing, listingId }: ListingCardProps) {
                 Available Credits
               </p>
               <p className="text-3xl font-bold text-white mt-1">
-                {credits.toString()}
+                {formatEther(credits).toString()}
               </p>
               <p className="text-xs text-gray-400 mt-1">tCO₂e</p>
             </div>
