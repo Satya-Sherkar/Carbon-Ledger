@@ -20,34 +20,38 @@ export default function AuditorPage() {
   const [eventData, setEventData] = useState<any>(null);
 
   async function verifyProject(projectId: number, creditsToMint: number) {
-    writeContract({
-      abi: MARKETPLACE_ABI,
-      address: MARKETPLACE_ADDRESS,
-      functionName: "verifyProject",
-      args: [projectId, creditsToMint],
-    });
-
-    // Save project details to database
-    const response = await fetch("/api/verify-project", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ projectId, creditsToMint }),
-    });
-
-    if (response.ok) {
-      console.log("Project verified successfully");
-    } else {
-      console.error("Failed to store in Database");
+    try {
+      writeContract({
+        abi: MARKETPLACE_ABI,
+        address: MARKETPLACE_ADDRESS,
+        functionName: "verifyProject",
+        args: [projectId, creditsToMint],
+      });
+  
+      // Save project details to database
+      const response = await fetch("/api/verify-project", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ projectId, creditsToMint }),
+      });
+  
+      if (response.ok) {
+        console.log("Project verified successfully");
+      } else {
+        console.error("Failed to store in Database");
+      }
+  
+      setEventData({
+        projectId,
+        creditsMinted: creditsToMint,
+      });
+  
+      setShowSuccessDialog(true);
+    } catch (error) {
+      console.error("Error verifying project:", error);
     }
-
-    setEventData({
-      projectId,
-      creditsMinted: creditsToMint,
-    });
-
-    setShowSuccessDialog(true);
     
   }
 
