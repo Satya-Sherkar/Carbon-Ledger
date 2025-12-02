@@ -1,14 +1,12 @@
 import { Project } from "@/app/models/project";
 import connectDB from "@/lib/connectDb";
-import mongoose from "mongoose";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
-  if (mongoose.connection.readyState !== 1) { 
-    await connectDB();
-  }
 
   try {
+    await connectDB();
+
     const { projectId, creditsToMint } = await req.json();
 
     // validations
