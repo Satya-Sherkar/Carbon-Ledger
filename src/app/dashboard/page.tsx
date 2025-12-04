@@ -9,6 +9,7 @@ import {
   TrendingUp,
   BarChart3,
   BanknoteArrowUp,
+  Flame,
 } from "lucide-react";
 import { ListingCard } from "@/components/listingcard";
 import { useReadContract } from "wagmi";
@@ -55,6 +56,13 @@ export default function UserDashboard() {
               >
                 <BanknoteArrowUp className="w-5 h-5" />
                 Sell Your Credits
+              </Link>
+              <Link
+                href="/dashboard/retire-credits"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg transition-colors shadow-sm"
+              >
+                <Flame className="w-5 h-5" />
+                Retire Your Credits
               </Link>
             </div>
           </div>
