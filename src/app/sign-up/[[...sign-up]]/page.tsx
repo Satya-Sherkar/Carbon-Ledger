@@ -104,25 +104,6 @@ const SignUpPage = () => {
       if (completeSignUp.status === "complete") {
         await setActive({ session: completeSignUp.createdSessionId });
 
-        // Save user data to MongoDB through your API route
-        // const response = await fetch("/api/save-user", {
-        //   method: "POST",
-        //   headers: {
-        //     "Content-Type": "application/json",
-        //   },
-        //   body: JSON.stringify({
-        //     name: `${formData.firstName} ${formData.lastName}`,
-        //     email: formData.email,
-        //     clerkId: completeSignUp.createdUserId,
-        //   }),
-        // });
-
-        // if (!response.ok) {
-        //   const data = await response.json();
-        //   setClerkError(data.error || "Failed to save user data");
-        //   return;
-        // }
-
         router.push("/dashboard");
       } else {
         console.log("Sign-up status:", JSON.stringify(completeSignUp, null, 2));
