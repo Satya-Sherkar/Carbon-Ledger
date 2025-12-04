@@ -27,7 +27,7 @@ export default function AuditorPage() {
         functionName: "verifyProject",
         args: [projectId, creditsToMint],
       });
-  
+
       // Save project details to database
       const response = await fetch("/api/verify-project", {
         method: "POST",
@@ -36,23 +36,22 @@ export default function AuditorPage() {
         },
         body: JSON.stringify({ projectId, creditsToMint }),
       });
-  
+
       if (response.ok) {
         console.log("Project verified successfully");
       } else {
         console.error("Failed to store in Database");
       }
-  
+
       setEventData({
         projectId,
         creditsMinted: creditsToMint,
       });
-  
+
       setShowSuccessDialog(true);
     } catch (error) {
       console.error("Error verifying project:", error);
     }
-    
   }
 
   return (
@@ -163,16 +162,18 @@ export default function AuditorPage() {
           </div>
         </div>
       </div>
-      { isConfirmed && (<SuccessDialog
-        isOpen={showSuccessDialog}
-        onClose={() => {
-          setShowSuccessDialog(false);
-          setProjectId(undefined);
-          setCreditsToMint(undefined);
-        }}
-        eventData={eventData}
-        txHash={txHash || ""}
-      />)}
+      {isConfirmed && (
+        <SuccessDialog
+          isOpen={showSuccessDialog}
+          onClose={() => {
+            setShowSuccessDialog(false);
+            setProjectId(undefined);
+            setCreditsToMint(undefined);
+          }}
+          eventData={eventData}
+          txHash={txHash || ""}
+        />
+      )}
     </div>
   );
 }
