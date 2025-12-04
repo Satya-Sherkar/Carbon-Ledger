@@ -122,294 +122,302 @@ const SignUpPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8">
-        <div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-amber-50">
+    <div className="relative min-h-screen overflow-hidden bg-[radial-gradient(ellipse_at_top_right,var(--tw-gradient-stops))] from-black/80 via-slate-900 to-black/95 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+      <div className="relative max-w-md w-full space-y-8">
+        <div className="text-center">
+          <h2 className="text-4xl font-bold text-white mb-2">
             Create your account
           </h2>
-          <p className="mt-2 text-center text-sm text-amber-50">
+          <p className="text-gray-400 text-sm">
             Step {currentStep} of 4
           </p>
         </div>
 
         {/* Progress Bar */}
-        <div className="w-full bg-gray-200 rounded-full h-2.5">
+        <div className="w-full bg-white/10 rounded-full h-2.5">
           <div
-            className="bg-blue-600 h-2.5 rounded-full transition-all duration-300"
+            className="bg-emerald-600 h-2.5 rounded-full transition-all duration-300"
             style={{ width: `${(currentStep / 4) * 100}%` }}
           ></div>
         </div>
 
         {/* Error Message */}
         {clerkError && (
-          <div className="bg-red-50 border border-red-400 text-red-700 px-4 py-3 rounded">
-            {clerkError}
+          <div className="p-4 rounded-lg bg-red-500/10 border border-red-500/20">
+            <p className="text-red-400 text-sm">{clerkError}</p>
           </div>
         )}
 
         {/* Step 1: Name */}
         {currentStep === 1 && (
-          <form onSubmit={handleStep1} className="mt-8 space-y-6">
-            <div className="rounded-md shadow-sm space-y-4">
-              <div>
-                <label
-                  htmlFor="firstName"
-                  className="block text-sm font-medium text-amber-50 mb-1"
-                >
-                  First Name <span className="text-red-500">*</span>
-                </label>
-                <input
-                  id="firstName"
-                  name="firstName"
-                  type="text"
-                  required
-                  value={formData.firstName}
-                  onChange={handleChange}
-                  className="appearance-none rounded-lg relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-amber-50 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
-                  placeholder="Enter your first name"
-                />
+          <div className="p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
+            <form onSubmit={handleStep1} className="space-y-6">
+              <div className="space-y-4">
+                <div>
+                  <label
+                    htmlFor="firstName"
+                    className="block text-sm font-medium text-gray-300 mb-2"
+                  >
+                    First Name <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    id="firstName"
+                    name="firstName"
+                    type="text"
+                    required
+                    value={formData.firstName}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400"
+                    placeholder="Enter your first name"
+                  />
+                </div>
+                <div>
+                  <label
+                    htmlFor="lastName"
+                    className="block text-sm font-medium text-gray-300 mb-2"
+                  >
+                    Last Name <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    id="lastName"
+                    name="lastName"
+                    type="text"
+                    required
+                    value={formData.lastName}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400"
+                    placeholder="Enter your last name"
+                  />
+                </div>
               </div>
-              <div>
-                <label
-                  htmlFor="lastName"
-                  className="block text-sm font-medium text-amber-50 mb-1"
-                >
-                  Last Name <span className="text-red-500">*</span>
-                </label>
-                <input
-                  id="lastName"
-                  name="lastName"
-                  type="text"
-                  required
-                  value={formData.lastName}
-                  onChange={handleChange}
-                  className="appearance-none rounded-lg relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-amber-50 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
-                  placeholder="Enter your last name"
-                />
-              </div>
-            </div>
 
-            <button
-              type="submit"
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-            >
-              Next
-            </button>
-          </form>
+              <button
+                type="submit"
+                className="w-full px-6 py-3 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-semibold transition-colors"
+              >
+                Next
+              </button>
+            </form>
+          </div>
         )}
 
         {/* Step 2: Email and Password */}
         {currentStep === 2 && (
-          <form onSubmit={handleStep2} className="mt-8 space-y-6">
-            <div className="rounded-md shadow-sm space-y-4">
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium text-amber-50 mb-1"
-                >
-                  Email Address <span className="text-red-500">*</span>
-                </label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  required
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="appearance-none rounded-lg relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-amber-50 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
-                  placeholder="Enter your email"
-                />
+          <div className="p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
+            <form onSubmit={handleStep2} className="space-y-6">
+              <div className="space-y-4">
+                <div>
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium text-gray-300 mb-2"
+                  >
+                    Email Address <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    autoComplete="email"
+                    required
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400"
+                    placeholder="Enter your email"
+                  />
+                </div>
+                <div>
+                  <label
+                    htmlFor="password"
+                    className="block text-sm font-medium text-gray-300 mb-2"
+                  >
+                    Password <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    id="password"
+                    name="password"
+                    type="password"
+                    autoComplete="new-password"
+                    required
+                    value={formData.password}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400"
+                    placeholder="Create a password"
+                  />
+                </div>
+                <div>
+                  <label
+                    htmlFor="confirmPassword"
+                    className="block text-sm font-medium text-gray-300 mb-2"
+                  >
+                    Confirm Password <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    id="confirmPassword"
+                    name="confirmPassword"
+                    type="password"
+                    autoComplete="new-password"
+                    required
+                    value={formData.confirmPassword}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400"
+                    placeholder="Confirm your password"
+                  />
+                </div>
               </div>
-              <div>
-                <label
-                  htmlFor="password"
-                  className="block text-sm font-medium text-amber-50 mb-1"
-                >
-                  Password <span className="text-red-500">*</span>
-                </label>
-                <input
-                  id="password"
-                  name="password"
-                  type="password"
-                  autoComplete="new-password"
-                  required
-                  value={formData.password}
-                  onChange={handleChange}
-                  className="appearance-none rounded-lg relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-amber-50 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
-                  placeholder="Create a password"
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="confirmPassword"
-                  className="block text-sm font-medium text-amber-50 mb-1"
-                >
-                  Confirm Password <span className="text-red-500">*</span>
-                </label>
-                <input
-                  id="confirmPassword"
-                  name="confirmPassword"
-                  type="password"
-                  autoComplete="new-password"
-                  required
-                  value={formData.confirmPassword}
-                  onChange={handleChange}
-                  className="appearance-none rounded-lg relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-amber-50 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
-                  placeholder="Confirm your password"
-                />
-              </div>
-            </div>
 
-            <div className="flex space-x-4">
-              <button
-                type="button"
-                onClick={handleBack}
-                className="w-1/2 flex justify-center py-2 px-4 border border-gray-300 text-sm font-medium rounded-md text-gray-900 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-              >
-                Back
-              </button>
-              <button
-                type="submit"
-                className="w-1/2 flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-              >
-                Next
-              </button>
-            </div>
-          </form>
+              <div className="flex space-x-4">
+                <button
+                  type="button"
+                  onClick={handleBack}
+                  className="w-1/2 px-6 py-3 rounded-lg border border-white/20 text-white font-semibold hover:bg-white/10 transition-colors"
+                >
+                  Back
+                </button>
+                <button
+                  type="submit"
+                  className="w-1/2 px-6 py-3 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-semibold transition-colors"
+                >
+                  Next
+                </button>
+              </div>
+            </form>
+          </div>
         )}
 
         {/* Step 3: Consent */}
         {currentStep === 3 && (
-          <form onSubmit={handleStep3} className="mt-8 space-y-6">
-            <div className="rounded-md shadow-sm space-y-4">
-              <div className="flex items-start">
-                <div className="flex items-center h-5">
-                  <input
-                    id="consent"
-                    name="consent"
-                    type="checkbox"
-                    checked={formData.consent}
-                    onChange={handleChange}
-                    className="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded"
-                  />
-                </div>
-                <div className="ml-3 text-sm">
-                  <label
-                    htmlFor="consent"
-                    className="font-medium text-amber-50"
-                  >
-                    I agree to the Terms and Conditions{" "}
-                    <span className="text-red-500">*</span>
-                  </label>
-                  <p className="text-gray-300 mt-1">
-                    By creating an account, you agree to our Terms of Service
-                    and Privacy Policy. We will send you a verification code to
-                    your email address.
-                  </p>
+          <div className="p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
+            <form onSubmit={handleStep3} className="space-y-6">
+              <div className="space-y-4">
+                <div className="flex items-start">
+                  <div className="flex items-center h-5">
+                    <input
+                      id="consent"
+                      name="consent"
+                      type="checkbox"
+                      checked={formData.consent}
+                      onChange={handleChange}
+                      className="focus:ring-emerald-400 h-4 w-4 text-emerald-600 border-white/20 rounded bg-white/5"
+                    />
+                  </div>
+                  <div className="ml-3 text-sm">
+                    <label
+                      htmlFor="consent"
+                      className="font-medium text-gray-300"
+                    >
+                      I agree to the Terms and Conditions{" "}
+                      <span className="text-red-500">*</span>
+                    </label>
+                    <p className="text-gray-400 mt-1">
+                      By creating an account, you agree to our Terms of Service
+                      and Privacy Policy. We will send you a verification code to
+                      your email address.
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-              <h4 className="text-sm font-semibold text-blue-900 mb-2">
-                Account Summary:
-              </h4>
-              <p className="text-sm text-blue-800">
-                <strong>Name:</strong> {formData.firstName} {formData.lastName}
-              </p>
-              <p className="text-sm text-blue-800">
-                <strong>Email:</strong> {formData.email}
-              </p>
-            </div>
+              <div className="p-4 rounded-lg bg-emerald-500/10 border border-emerald-500/20">
+                <h4 className="text-sm font-semibold text-emerald-300 mb-2">
+                  Account Summary:
+                </h4>
+                <p className="text-sm text-gray-300">
+                  <strong>Name:</strong> {formData.firstName} {formData.lastName}
+                </p>
+                <p className="text-sm text-gray-300">
+                  <strong>Email:</strong> {formData.email}
+                </p>
+              </div>
 
-            <div className="flex space-x-4">
-              <button
-                type="button"
-                onClick={handleBack}
-                className="w-1/2 flex justify-center py-2 px-4 border border-gray-300 text-sm font-medium rounded-md text-gray-900 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-              >
-                Back
-              </button>
-              <button
-                type="submit"
-                className="w-1/2 flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-              >
-                Sign Up
-              </button>
-            </div>
-          </form>
+              <div className="flex space-x-4">
+                <button
+                  type="button"
+                  onClick={handleBack}
+                  className="w-1/2 px-6 py-3 rounded-lg border border-white/20 text-white font-semibold hover:bg-white/10 transition-colors"
+                >
+                  Back
+                </button>
+                <button
+                  type="submit"
+                  className="w-1/2 px-6 py-3 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-semibold transition-colors"
+                >
+                  Sign Up
+                </button>
+              </div>
+            </form>
+          </div>
         )}
 
         {/* Step 4: OTP Verification */}
         {currentStep === 4 && (
-          <form onSubmit={handleOtpVerification} className="mt-8 space-y-6">
-            <div className="rounded-md shadow-sm space-y-4">
-              <div className="text-center mb-4">
-                <p className="text-sm text-amber-50">
-                  We've sent a verification code to{" "}
-                  <strong>{formData.email}</strong>
-                </p>
-                <p className="text-sm text-amber-50 mt-2">
-                  If you don't see the email in your inbox, please check your
-                  spam folder.
-                </p>
+          <div className="p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
+            <form onSubmit={handleOtpVerification} className="space-y-6">
+              <div className="space-y-4">
+                <div className="text-center mb-4">
+                  <p className="text-sm text-gray-300">
+                    We've sent a verification code to{" "}
+                    <strong className="text-white">{formData.email}</strong>
+                  </p>
+                  <p className="text-sm text-gray-400 mt-2">
+                    If you don't see the email in your inbox, please check your
+                    spam folder.
+                  </p>
+                </div>
+                <div>
+                  <label
+                    htmlFor="otpCode"
+                    className="block text-sm font-medium text-gray-300 mb-2"
+                  >
+                    Verification Code <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    id="otpCode"
+                    name="otpCode"
+                    type="text"
+                    required
+                    value={otpCode}
+                    onChange={(e) => setOtpCode(e.target.value)}
+                    className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400 text-center text-lg tracking-widest"
+                    placeholder="Enter 6-digit code"
+                    maxLength={6}
+                  />
+                </div>
               </div>
-              <div>
-                <label
-                  htmlFor="otpCode"
-                  className="block text-sm font-medium text-amber-50 mb-1"
-                >
-                  Verification Code <span className="text-red-500">*</span>
-                </label>
-                <input
-                  id="otpCode"
-                  name="otpCode"
-                  type="text"
-                  required
-                  value={otpCode}
-                  onChange={(e) => setOtpCode(e.target.value)}
-                  className="appearance-none rounded-lg relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-amber-50 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm text-center text-lg tracking-widest"
-                  placeholder="Enter 6-digit code"
-                  maxLength={6}
-                />
-              </div>
-            </div>
 
-            <button
-              type="submit"
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-            >
-              Verify and Complete Sign Up
-            </button>
-
-            <div className="text-center">
               <button
-                type="button"
-                onClick={() => {
-                  // Resend verification code
-                  if (isLoaded && signUp) {
-                    signUp.prepareEmailAddressVerification({
-                      strategy: "email_code",
-                    });
-                  }
-                }}
-                className="text-sm text-blue-600 hover:text-blue-500"
+                type="submit"
+                className="w-full px-6 py-3 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-semibold transition-colors"
               >
-                Resend verification code
+                Verify and Complete Sign Up
               </button>
-            </div>
-          </form>
+
+              <div className="text-center">
+                <button
+                  type="button"
+                  onClick={() => {
+                    // Resend verification code
+                    if (isLoaded && signUp) {
+                      signUp.prepareEmailAddressVerification({
+                        strategy: "email_code",
+                      });
+                    }
+                  }}
+                  className="text-sm text-emerald-400 hover:text-emerald-300 transition-colors"
+                >
+                  Resend verification code
+                </button>
+              </div>
+            </form>
+          </div>
         )}
 
         {/* Sign In Link */}
         <div className="text-center">
-          <p className="text-sm text-amber-50">
+          <p className="text-sm text-gray-400">
             Already have an account?{" "}
             <a
               href="/sign-in"
-              className="font-medium text-blue-600 hover:text-blue-500"
+              className="font-medium text-emerald-400 hover:text-emerald-300 transition-colors"
             >
               Sign in
             </a>
