@@ -211,19 +211,20 @@ export default function RegisterProject() {
       </div>
 
       {/* Success Dialog */}
-      {isConfirmed &&(<SuccessDialog
-        isOpen={showSuccessDialog}
-        onClose={() => {
-          setShowSuccessDialog(false);
-          // Reset form
-          setProjectName("");
-          setProjectOwnerAddress("");
-          setProjectDescription("");
-          setProjectOwnerEmail("");
-        }}
-        eventData={eventData}
-        txHash={txHash || ""}
-      />)}
+      {isConfirmed && (
+        <SuccessDialog
+          isOpen={showSuccessDialog}
+          onClose={() => {
+            setShowSuccessDialog(false);
+            setProjectName("");
+            setProjectOwnerAddress("");
+            setProjectDescription("");
+            setProjectOwnerEmail("");
+          }}
+          eventData={eventData}
+          txHash={txHash || ""}
+        />
+      )}
     </div>
   );
 }
