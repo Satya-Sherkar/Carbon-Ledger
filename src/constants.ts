@@ -1241,4 +1241,4 @@ export const CARBON_CREDIT_TOKEN_ABI = [
 export const CARBON_CREDIT_TOKEN_ADDRESS =
   "0xCF86ABeE4B269252D704dCe573bBe1e35E6879dC";
 
-export const DB_NAME = "mongodb";
+export const DB_NAME = "carbon-ledger";
