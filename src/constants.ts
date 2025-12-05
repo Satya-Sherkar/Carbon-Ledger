@@ -44,7 +44,7 @@ export const features: Feature[] = [
   },
 ];
 
-export const MARKETPLACE_ADDRESS = "0x8ddebe1FBD88E69A69f5E46e4fEE2306d3F6F6D3";
+export const MARKETPLACE_ADDRESS = "0xf56805b86dA33d7d49Ef8A5C0b476880804D31C0";
 
 export const MARKETPLACE_ABI = [
   {
@@ -1239,6 +1239,6 @@ export const CARBON_CREDIT_TOKEN_ABI = [
 ];
 
 export const CARBON_CREDIT_TOKEN_ADDRESS =
-  "0xD8c868194aA50a0Edc07F267Bb31654928Ccf561";
+  "0xCF86ABeE4B269252D704dCe573bBe1e35E6879dC";
 
 export const DB_NAME = "mongodb";
