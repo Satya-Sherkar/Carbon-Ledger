@@ -137,6 +137,7 @@ const SignInPage = () => {
                   id="remember-me"
                   name="remember-me"
                   type="checkbox"
+                  defaultChecked={true}
                   className="h-4 w-4 text-emerald-600 focus:ring-emerald-400 border-white/20 rounded bg-white/5"
                 />
                 <label
