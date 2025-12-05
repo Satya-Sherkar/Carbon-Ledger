@@ -1,6 +1,6 @@
 "use client";
 
-import { formatEther } from "viem";
+import { formatEther, parseEther } from "viem";
 import { Leaf, User, DollarSign } from "lucide-react";
 import { useWriteContract } from "wagmi";
 import { MARKETPLACE_ABI, MARKETPLACE_ADDRESS } from "@/constants";
@@ -31,6 +31,7 @@ export function ListingCard({ listing, listingId }: ListingCardProps) {
       abi: MARKETPLACE_ABI,
       address: MARKETPLACE_ADDRESS,
       functionName: "buyTokens",
+      value:parseEther(totalPrice),
       args: [listingId],
     });
   }
