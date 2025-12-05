@@ -14,11 +14,6 @@ const connectDB = async (): Promise<void> => {
     }
 
     await mongoose.connect(uri);
-
-    // const connectionInstance = await mongoose.connect(uri);
-    // console.log(
-    //   `\n MongoDB connected !! DB Host: ${connectionInstance.connection.host}`
-    // );
   } catch (error: unknown) {
     console.error("MongoDB Connection error", error);
     process.exit(1);
