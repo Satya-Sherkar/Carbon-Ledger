@@ -13,7 +13,7 @@ export default function Providers(props: { children: ReactNode }) {
   return (
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
-        <RainbowKitProvider theme={darkTheme()}>
+        <RainbowKitProvider theme={darkTheme()} modalSize="compact">
           {props.children}
         </RainbowKitProvider>
       </QueryClientProvider>
