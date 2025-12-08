@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useSignUp } from "@clerk/nextjs";
+import Link from "next/link";
 
 const SignUpPage = () => {
   const { isLoaded, signUp, setActive } = useSignUp();
@@ -415,12 +416,12 @@ const SignUpPage = () => {
         <div className="text-center">
           <p className="text-sm text-gray-400">
             Already have an account?{" "}
-            <a
+            <Link
               href="/sign-in"
               className="font-medium text-emerald-400 hover:text-emerald-300 transition-colors"
             >
               Sign in
-            </a>
+            </Link>
           </p>
         </div>
       </div>

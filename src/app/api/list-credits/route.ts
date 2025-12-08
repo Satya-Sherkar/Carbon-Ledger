@@ -45,9 +45,9 @@ export async function POST(req: NextRequest) {
       { message: "Credits listed successfully" },
       { status: 200 }
     );
-  } catch (error) {
+  } catch (error: Error | any) {
     return NextResponse.json(
-      { error: "Failed to list credits" },
+      { error:error.message || "Failed to list credits" },
       { status: 500 }
     );
   }

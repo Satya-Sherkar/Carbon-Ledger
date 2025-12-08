@@ -1,7 +1,6 @@
 import { IProject, Project } from "@/app/models/project";
 import { User } from "@/app/models/user";
 import connectDB from "@/lib/connectDb";
-import mongoose from "mongoose";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
