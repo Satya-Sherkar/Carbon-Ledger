@@ -4,6 +4,7 @@ import CustomConnectButton from "./customConnectButton";
 import { SignInButton, SignedOut, SignedIn, UserButton } from "@clerk/nextjs";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { House } from "lucide-react";
 
 export default function Header() {
   const pathname = usePathname();
@@ -34,9 +35,9 @@ export default function Header() {
           {showDashboardButton && (
             <Link
               href="/dashboard"
-              className="px-4 py-2 text-white font-semibold border-2 cursor-pointer hover:bg-white/10 rounded-md"
+              className="text-white font-semibold cursor-pointer hover:text-emerald-500"
             >
-              Dashboard
+              <House className="inline-block h-6 w-6" />
             </Link>
           )}
           <CustomConnectButton />
