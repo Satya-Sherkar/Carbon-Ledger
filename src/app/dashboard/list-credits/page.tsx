@@ -7,6 +7,8 @@ import {
   useAccount,
 } from "wagmi";
 import { MARKETPLACE_ABI, MARKETPLACE_ADDRESS } from "@/constants";
+import { CircleQuestionMark } from "lucide-react";
+import Link from "next/link";
 
 export default function ListCreditsPage() {
   const { isConnected } = useAccount();
@@ -109,17 +111,22 @@ export default function ListCreditsPage() {
               <label className="text-sm text-gray-300 block mb-2 mt-4">
                 Price per Credit (in wei / smallest unit)
               </label>
-              <input
-                type="number"
-                placeholder="Price per credit"
-                value={perCreditPrice}
-                onChange={(e) =>
-                  setPerCreditPrice(
-                    e.target.value === "" ? "" : Number(e.target.value)
-                  )
-                }
-                className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-400"
-              />
+              <div className="relative">
+                <input
+                  type="number"
+                  placeholder="Price per credit"
+                  value={perCreditPrice}
+                  onChange={(e) =>
+                    setPerCreditPrice(
+                      e.target.value === "" ? "" : Number(e.target.value)
+                    )
+                  }
+                  className="w-full pr-10 pl-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-400"
+                />
+                <Link href="https://eth-converter.com/" target="_blank" className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-auto">
+                  <CircleQuestionMark className="h-5 w-5 text-gray-400" />
+                </Link>
+              </div>
             </div>
 
             {!isConnected && (
