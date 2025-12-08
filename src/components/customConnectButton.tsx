@@ -1,4 +1,5 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { Wallet } from "lucide-react";
 
 export default function CustomConnectButton() {
   return (
@@ -33,9 +34,9 @@ export default function CustomConnectButton() {
           return (
             <button
               onClick={openConnectModal}
-              className="px-4 py-2 text-white font-semibold border-2 cursor-pointer hover:bg-white/10 rounded-md"
+              className="text-white font-semibold cursor-pointer hover:text-emerald-500"
             >
-              Connect Wallet
+              <Wallet className="inline-block mr-2 h-6 w-6" />
             </button>
           );
         }
@@ -47,7 +48,7 @@ export default function CustomConnectButton() {
               className="px-4 py-2 text-white font-semibold border-2 cursor-pointer hover:bg-white/10 rounded-md"
               title="Account Details"
             >
-              {account.displayName}
+              {account.address.slice(0, 6) + "..." }
             </button>
           </div>
         );
