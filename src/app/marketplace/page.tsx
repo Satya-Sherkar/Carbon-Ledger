@@ -55,23 +55,23 @@ export default function Marketplace() {
     <main className="min-h-screen bg-[radial-gradient(ellipse_at_top_right,var(--tw-gradient-stops))] from-black/80 via-slate-900 to-black/95 py-12">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
-        <div className="mb-8 flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-          <div className="text-center md:text-left">
-            <h1 className="py-2 text-3xl md:text-5xl font-extrabold bg-clip-text text-transparent bg-linear-to-r from-green-400 to-blue-500">
+        <div className="mb-8 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 lg:gap-0">
+          <div className="text-center lg:text-left w-full lg:w-auto lg:order-1">
+            <h1 className="py-2 text-3xl sm:text-4xl lg:text-5xl font-extrabold bg-clip-text text-transparent bg-linear-to-r from-green-400 to-blue-500">
               Carbon-Ledger Marketplace
             </h1>
-            <p className="mx-auto mt-2 max-w-2xl text-sm text-gray-400 md:mx-0">
+            <p className="mx-auto mt-2 max-w-2xl text-xs sm:text-sm text-gray-400 lg:mx-0">
               Discover curated, verified carbon credits — buy, sell, and support
               real-world emissions reductions.
             </p>
           </div>
-          <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap md:justify-end">
-            <div className="flex justify-end sm:justify-start">
-              <div className="inline-flex items-center gap-3 rounded-lg border border-white/10 bg-white/5 px-4 py-2">
-                <Leaf className="h-5 w-5 text-emerald-400" />
-                <div className="text-right">
-                  <div className="text-xs text-gray-400">Listed Credits</div>
-                  <div className="text-sm font-semibold text-white">
+          <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-4 w-full lg:w-auto order-1 lg:order-2 justify-center lg:justify-end">
+            <div className="w-full sm:w-auto flex justify-center lg:justify-end">
+              <div className="inline-flex items-center gap-3 rounded-lg border border-white/10 bg-white/5 px-3 py-2 sm:px-4 sm:py-2 w-full sm:w-auto max-w-[200px] sm:max-w-none">
+                <Leaf className="h-4 w-4 sm:h-5 sm:w-5 text-emerald-400 shrink-0" />
+                <div className="text-center sm:text-right flex-1 min-w-0">
+                  <div className="text-xs text-gray-400 truncate">Listed Credits</div>
+                  <div className="text-xs sm:text-sm font-semibold text-white truncate">
                     {listedCredits ?? (
                       <span className="text-gray-400">Loading...</span>
                     )}
@@ -79,12 +79,12 @@ export default function Marketplace() {
                 </div>
               </div>
             </div>
-            <div className="flex justify-end sm:justify-start">
-              <div className="inline-flex items-center gap-3 rounded-lg border border-white/10 bg-white/5 px-4 py-2">
-                <Leaf className="h-5 w-5 text-emerald-400" />
-                <div className="text-right">
-                  <div className="text-xs text-gray-400">Total Supply</div>
-                  <div className="text-sm font-semibold text-white">
+            <div className="w-full sm:w-auto flex justify-center lg:justify-end">
+              <div className="inline-flex items-center gap-3 rounded-lg border border-white/10 bg-white/5 px-3 py-2 sm:px-4 sm:py-2 w-full sm:w-auto max-w-[200px] sm:max-w-none">
+                <Leaf className="h-4 w-4 sm:h-5 sm:w-5 text-emerald-400 shrink-0" />
+                <div className="text-center sm:text-right flex-1 min-w-0">
+                  <div className="text-xs text-gray-400 truncate">Total Supply</div>
+                  <div className="text-xs sm:text-sm font-semibold text-white truncate">
                     {totalSupplyFormatted ? (
                       `${totalSupplyFormatted} CCT`
                     ) : (
