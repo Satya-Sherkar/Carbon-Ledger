@@ -32,36 +32,36 @@ export default function UserDashboard() {
     <div className="relative min-h-screen overflow-hidden bg-[radial-gradient(ellipse_at_top_right,var(--tw-gradient-stops))] from-black/80 via-slate-900 to-black/95 py-12">
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Page header (card) */}
-        <div className="mb-8 p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
-          <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-3xl font-bold text-white">
+        <div className="mb-8 p-4 sm:p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+            <div className="space-y-2">
+              <h1 className="text-2xl sm:text-3xl font-bold text-white">
                 Welcome back, {user?.firstName}
               </h1>
-              <p className="text-gray-300 mt-1">
+              <p className="text-gray-300 text-sm sm:text-base">
                 Manage your carbon credits and explore the marketplace
               </p>
             </div>
-            <div className="flex gap-3">
+            <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
               <Link
                 href="/dashboard/register-project"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg transition-colors shadow-sm"
+                className="inline-flex items-center justify-center gap-2 px-4 py-3 sm:px-6 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg transition-colors shadow-sm text-sm sm:text-base flex-1 sm:flex-none"
               >
-                <Plus className="w-5 h-5" />
+                <Plus className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
                 Register Project
               </Link>
               <Link
                 href="/dashboard/list-credits"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg transition-colors shadow-sm"
+                className="inline-flex items-center justify-center gap-2 px-4 py-3 sm:px-6 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg transition-colors shadow-sm text-sm sm:text-base flex-1 sm:flex-none"
               >
-                <BanknoteArrowUp className="w-5 h-5" />
+                <BanknoteArrowUp className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
                 Sell Your Credits
               </Link>
               <Link
                 href="/dashboard/retire-credits"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg transition-colors shadow-sm"
+                className="inline-flex items-center justify-center gap-2 px-4 py-3 sm:px-6 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg transition-colors shadow-sm text-sm sm:text-base flex-1 sm:flex-none"
               >
-                <Flame className="w-5 h-5" />
+                <Flame className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
                 Retire Your Credits
               </Link>
             </div>
