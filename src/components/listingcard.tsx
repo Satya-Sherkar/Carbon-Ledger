@@ -4,6 +4,7 @@ import { formatEther, parseEther } from "viem";
 import { Leaf, User, DollarSign } from "lucide-react";
 import { useWriteContract } from "wagmi";
 import { MARKETPLACE_ABI, MARKETPLACE_ADDRESS } from "@/constants";
+import { useEthPriceInr } from "@/hooks/useEthPrice";
 
 interface Listing {
   credits: bigint;
@@ -19,11 +20,18 @@ interface ListingCardProps {
 
 export function ListingCard({ listing, listingId }: ListingCardProps) {
   const { credits, seller, pricePerCredit, isActive } = listing;
+  const { price, loading } = useEthPriceInr();
 
   const totalPrice = (
     Number(formatEther(credits)) * Number(formatEther(pricePerCredit))
   ).toFixed(9);
   const formattedPrice = formatEther(pricePerCredit);
+
+  const totalPriceInr = loading
+    ? "Loading..."
+    : `₹${(Number(totalPrice) * price).toLocaleString("en-IN", {
+        maximumFractionDigits: 2,
+      })}`;
 
   const { writeContract } = useWriteContract();
   function purchaseCredits(listingId: number) {
@@ -90,7 +98,7 @@ export function ListingCard({ listing, listingId }: ListingCardProps) {
           <p className="text-2xl font-bold text-emerald-300">
             {formattedPrice} ETH
           </p>
-          <p className="text-sm text-gray-400 mt-1">Total: {totalPrice} ETH</p>
+          <p className="text-sm text-gray-400 mt-1">Total: {totalPrice} ETH / {totalPriceInr}</p>
         </div>
 
         {/* Seller Information */}
