@@ -7,10 +7,6 @@ export default function Footer() {
   return (
     <footer>
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-6 px-4 py-6 text-center sm:px-6 md:flex-row md:items-center md:justify-between md:text-left">
-        <p className="text-sm text-gray-600">
-          &copy; {date} Carbon Marketplace. All rights reserved.
-        </p>
-
         <div className="flex flex-col items-center gap-4 md:flex-row md:gap-6">
           <div className="flex items-center gap-4">
             <Link
@@ -45,6 +41,9 @@ export default function Footer() {
             </Link>
           </div>
         </div>
+        <p className="text-sm text-gray-600 hover:text-emerald-500">
+          &copy; {date} Carbon Marketplace. All rights reserved.
+        </p>
       </div>
     </footer>
   );
