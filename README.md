@@ -134,10 +134,10 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ### Smart Contract Development
 
-1. **Navigate to contracts directory**
+1. **Navigate to contracts repository and clone it**
 ```
 
-cd contracts
+git clone https://github.com/Satya-Sherkar/carbon-Ledger-sc.git
 
 ```
 
@@ -184,8 +184,8 @@ The platform uses a modular smart contract architecture:
 
 | Contract | Address | Explorer |
 |----------|---------|----------|
-| Carbon Credit Token | `0x07eC860dB41185c16545d2508161A6e575258412` | [View on Etherscan](https://sepolia.etherscan.io/address/0x07eC860dB41185c16545d2508161A6e575258412) |
-| Marketplace | `0xfb74944f29Cd09cCF7cd1e4F9DD1BE09553fbb2f` | [View on Etherscan](https://sepolia.etherscan.io/address/0xfb74944f29Cd09cCF7cd1e4F9DD1BE09553fbb2f) |
+| Carbon Credit Token | `0xCF86ABeE4B269252D704dCe573bBe1e35E6879dC` | [View on Etherscan](https://sepolia.etherscan.io/address/0xCF86ABeE4B269252D704dCe573bBe1e35E6879dC) |
+| Marketplace | `0xf56805b86dA33d7d49Ef8A5C0b476880804D31C0` | [View on Etherscan](https://sepolia.etherscan.io/address/0xf56805b86dA33d7d49Ef8A5C0b476880804D31C0) |
 
 ---
 
@@ -195,6 +195,8 @@ The platform uses a modular smart contract architecture:
 **Developer**: Satyam Sherkar
 
 **Project Link**: [https://github.com/Satya-Sherkar/Carbon-Ledger](https://github.com/Satya-Sherkar/Carbon-Ledger)
+
+**Smart Contracts**: [https://github.com/Satya-Sherkar/carbon-Ledger-sc](https://github.com/Satya-Sherkar/carbon-Ledger-sc)
 
 **Live Demo**: [https://carbon-ledger-ui.vercel.app](https://carbon-ledger-ui.vercel.app)
 
