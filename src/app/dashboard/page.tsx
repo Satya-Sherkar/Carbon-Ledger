@@ -10,6 +10,7 @@ import {
   BarChart3,
   BanknoteArrowUp,
   Flame,
+  FolderOpen
 } from "lucide-react";
 import { ListingCard } from "@/components/listingcard";
 import { useReadContract } from "wagmi";
@@ -42,27 +43,34 @@ export default function UserDashboard() {
                 Manage your carbon credits and explore the marketplace
               </p>
             </div>
-            <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+            <div className="flex flex-wrap items-center justify-center lg:justify-end gap-3">
+              <Link
+                href="/dashboard/my-projects"
+                className="inline-flex items-center gap-2 px-3 py-2 text-sm font-medium text-white transition-colors rounded-lg shadow-sm bg-white/10 hover:bg-white/20 border border-white/20"
+              >
+                <FolderOpen className="w-4 h-4 shrink-0" />
+                My Projects
+              </Link>
               <Link
                 href="/dashboard/register-project"
-                className="inline-flex items-center justify-center gap-2 px-4 py-3 sm:px-6 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg transition-colors shadow-sm text-sm sm:text-base flex-1 sm:flex-none"
+                className="inline-flex items-center gap-2 px-3 py-2 text-sm font-medium text-white transition-colors rounded-lg shadow-sm bg-white/10 hover:bg-white/20 border border-white/20"
               >
-                <Plus className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
+                <Plus className="w-4 h-4 shrink-0" />
                 Register Project
               </Link>
               <Link
                 href="/dashboard/list-credits"
-                className="inline-flex items-center justify-center gap-2 px-4 py-3 sm:px-6 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg transition-colors shadow-sm text-sm sm:text-base flex-1 sm:flex-none"
+                className="inline-flex items-center gap-2 px-3 py-2 text-sm font-medium text-white transition-colors rounded-lg shadow-sm bg-white/10 hover:bg-white/20 border border-white/20"
               >
-                <BanknoteArrowUp className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
-                Sell Your Credits
+                <BanknoteArrowUp className="w-4 h-4 shrink-0" />
+                Sell Credits
               </Link>
               <Link
                 href="/dashboard/retire-credits"
-                className="inline-flex items-center justify-center gap-2 px-4 py-3 sm:px-6 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg transition-colors shadow-sm text-sm sm:text-base flex-1 sm:flex-none"
+                className="inline-flex items-center gap-2 px-3 py-2 text-sm font-medium text-white transition-colors rounded-lg shadow-sm bg-white/10 hover:bg-white/20 border border-white/20"
               >
-                <Flame className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
-                Retire Your Credits
+                <Flame className="w-4 h-4 shrink-0" />
+                Retire Credits
               </Link>
             </div>
           </div>
