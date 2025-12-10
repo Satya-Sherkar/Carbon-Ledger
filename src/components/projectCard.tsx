@@ -3,7 +3,7 @@ import { formatEther } from "viem";
 
 interface ProjectCardProps {
    title: string;
-   decscription: string;
+   description: string;
    owner: string;
    ownerWalletAddress: string;
    isVerified: boolean;
@@ -13,11 +13,10 @@ interface ProjectCardProps {
    pricePerCredit: bigint;
    createdAt: string;
 }
-// TODO: fix typo of description in models.
 
 export function ProjectCard({
    title,
-   decscription,
+   description,
    owner,
    ownerWalletAddress,
    isVerified,
@@ -62,7 +61,7 @@ export function ProjectCard({
             {/* Project Title & Description */}
             <div>
                <h2 className="text-2xl font-bold text-white mb-2">{title}</h2>
-               <p className="text-gray-300 text-sm leading-relaxed">{decscription}</p>
+               <p className="text-gray-300 text-sm leading-relaxed">{description}</p>
             </div>
 
             {/* Credits Information */}
