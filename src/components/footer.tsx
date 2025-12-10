@@ -1,4 +1,4 @@
-import { Twitter, Github, Linkedin } from "lucide-react";
+import { Twitter, Github, Linkedin, UserCog, UserStar } from "lucide-react";
 import Link from "next/link";
 
 export default function Footer() {
@@ -26,6 +26,18 @@ export default function Footer() {
               className="text-gray-600 transition hover:text-emerald-500"
             >
               <Linkedin size={20} />
+            </Link>
+            <Link
+              href="/admin"
+              className="text-white font-semibold cursor-pointer hover:text-emerald-500"
+            >
+              <UserCog size={20} />
+            </Link>
+            <Link
+              href="/auditor"
+              className="text-white font-semibold cursor-pointer hover:text-emerald-500"
+            >
+              <UserStar size={20} />
             </Link>
           </div>
 
